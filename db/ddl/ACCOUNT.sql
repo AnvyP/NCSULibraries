@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CREATE TABLE ACCOUNT
 (
    PATRON_ID   VARCHAR2 (20) NOT NULL,
@@ -8,4 +9,15 @@ NOCACHE
 LOGGING;
 
 ALTER TABLE account
+=======
+CREATE TABLE ACCOUNT
+(
+   PATRON_ID   VARCHAR2 (20) NOT NULL,
+   BALANCE     FLOAT (53) DEFAULT 0.0
+)
+NOCACHE
+LOGGING;
+
+ALTER TABLE account
+>>>>>>> branch 'master' of https://github.ncsu.edu/alakshm6/NCSULibraries.git
    ADD CONSTRAINT sys_c00814945 PRIMARY KEY (patron_id) VALIDATE;
