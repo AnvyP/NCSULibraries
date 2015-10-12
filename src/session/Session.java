@@ -19,6 +19,7 @@ public class Session {
    * This variable may only be used to implement time-outs in session. For all I know, this is not part of the
    * specifications doc so far.
    */
+  @SuppressWarnings("unused")
   private int timeToLive = 0;
 
   /**
