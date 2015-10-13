@@ -1,4 +1,4 @@
-package log;
+package utilities.log;
 
 
 public class Log {
@@ -18,16 +18,23 @@ public class Log {
   }
 
   public static void i(String LOG_TAG, String msg) {
-
+    sInstance.i(LOG_TAG, msg);
   }
 
   public static void w(String LOG_TAG, String msg) {
-
+    sInstance.w(LOG_TAG, msg);
   }
 
   public static void e(String LOG_TAG, String msg) {
+    sInstance.e(LOG_TAG, msg);
+  }
+
+  public static void p(String LOG_TAG, String msg) {
+    sInstance.p("", msg);
 
   }
+
+
 }
 
 
@@ -39,6 +46,14 @@ interface ILog {
   void w(String LOG_TAG, String msg);
 
   void e(String LOG_TAG, String msg);
+
+  /**
+   * The only purpose of this method is to print messages on to console in USER/ENGG binary.
+   * 
+   * @param LOG_TAG
+   * @param msg
+   */
+  void p(String LOG_TAG, String msg);
 }
 
 
@@ -64,6 +79,12 @@ class EnggLog implements ILog {
     System.out.println(LOG_TAG + " : " + msg);
   }
 
+  @Override
+  public void p(String LOG_TAG, String msg) {
+    System.out.println(LOG_TAG + " : " + msg);
+
+  }
+
 }
 
 
@@ -83,13 +104,19 @@ class UserLog implements ILog {
 
   @Override
   public void w(String LOG_TAG, String msg) {
-    // TODO Auto-generated method stub
+    System.out.println(LOG_TAG + " : " + msg);
 
   }
 
   @Override
   public void e(String LOG_TAG, String msg) {
-    // TODO Auto-generated method stub
+    System.out.println(LOG_TAG + " : " + msg);
+
+  }
+
+  @Override
+  public void p(String LOG_TAG, String msg) {
+    System.out.println(LOG_TAG + " : " + msg);
 
   }
 
