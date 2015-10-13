@@ -7,27 +7,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import utilities.log.Log;
-
+import utilities.Constants;
 
 public class OrclConnection {
-  static final String JDBC_URL = "jdbc:oracle:thin:@ora.csc.ncsu.edu:1521:orcl";
+  static final String JDBC_URL = Constants.JDBC_URL;
 
-  
-  
   static Connection sInstance = null;
 
-  private final static String user = "apatlol2";
+  private final static String user = Constants.user;
 
-  private final static String passwd = "200111268";
+  private final static String passwd = Constants.passwd;
 
   private static final String LOG_TAG = OrclConnection.class.getSimpleName();
 
   static synchronized Connection getInstance() {
     if (sInstance == null) {
       try {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
         sInstance = DriverManager.getConnection(JDBC_URL, user, passwd);
       } catch (SQLException e) {
-        Log.d(LOG_TAG, e.getMessage());
+        Log.e(LOG_TAG, e.getMessage());
+      } catch (ClassNotFoundException e) {
+        Log.e(LOG_TAG, e.getMessage());
       }
     }
     return sInstance;
