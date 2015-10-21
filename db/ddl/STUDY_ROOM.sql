@@ -5,7 +5,6 @@
 CREATE TABLE STUDY_ROOM
 (
    ID         NUMBER (*, 0),
-   LOCATION   VARCHAR2 (40) NOT NULL,
    ROOM_NO    VARCHAR2 (20) NOT NULL,
    FLOOR_NO   NUMBER (*, 0),
    CAPACITY   NUMBER (*, 0)
@@ -21,9 +20,5 @@ ALTER TABLE study_room
        REFERENCES alakshm6.room (id)
        VALIDATE;
 
-ALTER TABLE study_room
-   ADD CONSTRAINT location_values CHECK
-          (location IN ('D.H.Hill Library', 'James B.Hunt Library'))
-          VALIDATE;
 
 
