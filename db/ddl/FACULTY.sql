@@ -5,8 +5,7 @@ CREATE TABLE FACULTY
    "Name"              VARCHAR2 (32),
    "Category"          VARCHAR2 (20),
    "Nationality"       VARCHAR2 (20),
-   "Department"        VARCHAR2 (20),
-   "CoursesTeaching"   VARCHAR2 (20)
+   "Department"        VARCHAR2 (20)
 )
 NOCACHE
 LOGGING;
