@@ -6,8 +6,7 @@ $typeOfPatrol = $_REQUEST["USER"];
 echo "<form action=\"CheckCredentials.php\" method=\"post\" \">
 		UNITY ID:<br>
 		<input type=\"text\" name=\"Name\" value=\" \">
-		<br>
-		PASSWORD:<br>
+		<br>PASSWORD:<br>
 		<input type=\"password\" name=\"PASSWORD\" value=\"\">
 		<br><br>
 		<input type=\"password\" name=\"user\" style=\"display:none\"   value=".$typeOfPatrol.">

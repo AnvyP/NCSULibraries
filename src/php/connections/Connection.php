@@ -12,10 +12,10 @@ $password = "200111268";
 
 $db = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = ora.csc.ncsu.edu)(PORT = 1521)))(CONNECT_DATA=(SID=orcl)))";
 
-$c1 = ocilogon($username,$password,$db);
+$conn = ocilogon($username,$password,$db);
 
 //$conn =  oci_connect($username,$password,$oracleUrl);
-if (!$c1) {
+if (!$conn) {
 	$e = oci_error();
 	trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }else{

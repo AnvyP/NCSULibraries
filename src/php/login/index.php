@@ -1,32 +1,31 @@
 <?php
 echo "<HTML>";
-echo "<BODY>";
+echo "<BODY align=\"center\">";
 
 echo "select one of the following";
-
-echo "<TABLE border width = \"1\" style=\"width = 100%\">";
+echo "<table align=\"center\">";
+echo "<tr>";
+echo "<td>";
+echo "<table border=\"1\"   align=\"center\" \">";
 
 echo "<tr>";
 echo "<td>";
-echo "aa";
 echo "<a href=\"Login.php?USER=STUDENT\">STUDENT LOGIN </a>";
-//echo "bb";
-echo "<\td>";
-echo "\tr";
+
+echo "</td>";
+echo "</tr>";
 
 echo "<tr>";
 echo "<td>";
 echo "<a href=\"Login.php?USER=FACULTY\">FACULTY LOGIN </a>";
-echo "<\td>";
+echo "</td>";
 
-echo "\tr";
-
-echo "<>";
-
-
+echo "</tr>";
+echo "</table>";
+echo "</tr>";
+echo "</td>";
+echo "</table >";
 echo "</BODY>";
-
-
 
 echo "</HTML>";
 

@@ -13,14 +13,16 @@ echo "<br> <br>";
 
 // if credentials are okay then.
 
-// if credentials fails => 
+// if credentials fails =>
 //header('Location: Login.php');
 
 session_start();
 $_SESSION['NAME'] = $_REQUEST["Name"];
 $_SESSION['USER'] = $_REQUEST["user"];
 
-
-header('Location: student/HomePage.php');
-
+if($_SESSION['USER'] == "STUDENT"){
+	header('Location: student/HomePage.php');
+}else{
+	header('Location: faculty/HomePage.php');
+}
 ?>
