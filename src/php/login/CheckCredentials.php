@@ -1,4 +1,7 @@
 <?php
+
+$conn = null;
+
 require_once('../connections/Connection.php');
 
 echo "<br> <br>";

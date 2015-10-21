@@ -3,8 +3,8 @@
 
 //echo "testing..!!";
 
-$username = "apatlol2";
-$password = "200111268";
+$username = "alakshm6";
+$password = "200105304";
 //$oracleUrl = "(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=adc2190214.us.oracle.com)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=dbadc2190214.us.oracle.com)))";
 
 //$oracleUrl = "(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=ora.csc.ncsu.edu)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)))";

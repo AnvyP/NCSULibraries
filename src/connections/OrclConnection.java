@@ -44,8 +44,8 @@ public class OrclConnection {
 
       Class.forName("oracle.jdbc.driver.OracleDriver");
 
-      String user = "apatlol2"; // For example, "jsmith"
-      String passwd = "200111268"; // Your 9 digit student ID number
+      //String user = "apatlol2"; // For example, "jsmith"
+      //String passwd = "200111268"; // Your 9 digit student ID number
 
 
       Connection conn = null;
