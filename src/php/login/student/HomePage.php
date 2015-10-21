@@ -5,10 +5,12 @@ echo $_SESSION['NAME'] ;
 echo "<br><br>";
 echo $_SESSION['USER'];
 echo "<br><br>";
-
+$conn = null;
 require_once('../../connections/Connection.php');
 
-
+require_once('../../connections/ConnectionStatement.php');
+$query = "SELECT * FROM COFFEES";
+fetchTuples($query,$conn);
 
 
 

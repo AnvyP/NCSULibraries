@@ -1,5 +1,6 @@
 <?php
-function fetchTuples($query){
+//THE FOLLOWING SOURCE IS TAKEN FROM: http://php.net/manual/en/function.oci-execute.php
+function fetchTuples($query,$conn){
 	$stid = oci_parse($conn, $query);
 	oci_execute($stid);
 	echo "<table border='1'>\n";

@@ -1,7 +1,7 @@
 <?php
 
 
-echo "testing..!!";
+//echo "testing..!!";
 
 $username = "apatlol2";
 $password = "200111268";
@@ -15,10 +15,11 @@ $db = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = ora.csc.n
 $conn = ocilogon($username,$password,$db);
 
 //$conn =  oci_connect($username,$password,$oracleUrl);
+
 if (!$conn) {
 	$e = oci_error();
 	trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 }else{
-	echo "Connnection established!!";
+	//echo "Connnection established!!";
 }
 ?>
