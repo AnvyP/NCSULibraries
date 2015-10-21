@@ -18,5 +18,10 @@ ALTER TABLE conference_proceeding
    ADD CONSTRAINT fk_conference_proceeding_1 FOREIGN KEY (id)
        REFERENCES alakshm6.publication (id)
        VALIDATE;
+       
+ALTER TABLE conference_proceeding
+   ADD CONSTRAINT fk_conference_proceeding_2 FOREIGN KEY (conference_number)
+       REFERENCES alakshm6.publication (identifier)
+       VALIDATE;
 
 
