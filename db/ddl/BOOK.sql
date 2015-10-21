@@ -3,7 +3,6 @@ CREATE TABLE BOOK
    ID            NUMBER (*, 0),
    ISBN          VARCHAR2 (30),
    EDITION       VARCHAR2 (20),
-   LOCATION 	 VARCHAR2 (40),
    IS_RESERVED   CHAR (1)
 )
 NOCACHE
@@ -21,8 +20,3 @@ ALTER TABLE book
    ADD CONSTRAINT fk_book_1 FOREIGN KEY (isbn)
        REFERENCES alakshm6.publication (identifier)
        VALIDATE;
-
-ALTER TABLE book
-   ADD CONSTRAINT location_values CHECK
-          (location IN ('D.H.Hill Library', 'James B.Hunt Library'))
-          VALIDATE;
