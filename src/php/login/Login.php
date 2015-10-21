@@ -1,5 +1,5 @@
 <?php
-
+//Check out Swingbench
 $typeOfPatrol = $_REQUEST["USER"];
 
 //echo "$typeOfPatrol";
