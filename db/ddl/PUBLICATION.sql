@@ -6,7 +6,8 @@ CREATE TABLE PUBLICATION
    TITLE        VARCHAR2 (100),
    YEAR         NUMBER (*, 0),
    PUBLISHER    VARCHAR2 (100),
-   COPY_TYPE    VARCHAR2 (20)
+   COPY_TYPE    VARCHAR2 (20),
+   LOCATION	    VARCHAR2(40)
 )
 NOCACHE
 LOGGING;
@@ -20,4 +21,9 @@ ALTER TABLE publication
 ALTER TABLE publication
    ADD CONSTRAINT copy_type CHECK
           (copy_type IN ('Electronic', 'Hardcopy'))
+          VALIDATE;
+         
+ALTER TABLE publication
+   ADD CONSTRAINT location_values CHECK
+          (location IN ('D.H.Hill Library', 'James B.Hunt Library'))
           VALIDATE;
