@@ -19,5 +19,5 @@ ALTER TABLE publication
 
 ALTER TABLE publication
    ADD CONSTRAINT copy_type CHECK
-          (copy_type IN ('Electronic', 'Hardcopy', 'Both'))
+          (copy_type IN ('Electronic', 'Hardcopy'))
           VALIDATE;
