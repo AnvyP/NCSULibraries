@@ -3,7 +3,8 @@ CREATE TABLE QUEUE
    "QueueType"    VARCHAR2 (20) NOT NULL,
    "QueueId"      VARCHAR2 (20) NOT NULL,
    "WaitlistNo"   VARCHAR2 (20),
-   "UnityId"      VARCHAR2 (20)
+   "UnityId"      VARCHAR2 (20),
+   "Id"           VARCHAR2 (20)
 )
 NOCACHE
 LOGGING;
