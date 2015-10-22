@@ -11,4 +11,6 @@ echo "<form action=\"CheckCredentials.php\">
 		<input type=\"submit\" value=\"Submit\">
 		</form>";
 
+
+
 ?>

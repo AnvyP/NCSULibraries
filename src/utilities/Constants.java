@@ -10,8 +10,8 @@ public class Constants {
 
   public static final String JDBC_URL = "jdbc:oracle:thin:@ora.csc.ncsu.edu:1521:orcl";
 
-  public final static String user = "apatlol2";
+  public final static String user = "alakshm6";
 
-  public final static String passwd = "200111268";
+  public final static String passwd = "200105304";
 
 }
