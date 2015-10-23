@@ -3,9 +3,9 @@ CREATE TABLE CHECKOUT
    "UnityId"        VARCHAR2 (20),
    "QueueType"      VARCHAR2 (20),
    "QueueId"        VARCHAR2 (20),
-   "DueDate"        DATE,
-   "CheckOutDate"   DATE,
-   "ReturnDate"     DATE
+   "DueDate"        TIMESTAMP,
+   "CheckOutDate"   TIMESTAMP,
+   "ReturnDate"     TIMESTAMP
 )
 NOCACHE
 LOGGING;
