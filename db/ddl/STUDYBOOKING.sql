@@ -6,8 +6,8 @@ CREATE TABLE STUDYBOOKING
 (
    "UnityId"        VARCHAR2 (20),
    "Id"             VARCHAR2 (20),
-   "CheckoutTime"   VARCHAR2 (20),
-   "Upto"           VARCHAR2 (20)
+   "CheckoutTime"   TIMESTAMP,
+   "Upto"           NUMBER(10)
 )
 NOCACHE
 LOGGING;

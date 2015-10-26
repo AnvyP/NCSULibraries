@@ -5,8 +5,8 @@
 CREATE TABLE CONFERENCEBOOKING
 (
    "UnityId"        VARCHAR2 (20),
-   "CheckoutTime"   VARCHAR2 (20),
-   "Upto"           VARCHAR2 (20),
+   "CheckoutTime"   TIMESTAMP,
+   "Upto"           NUMBER(10),
    "Id"             VARCHAR2 (20)
 )
 NOCACHE
