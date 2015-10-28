@@ -6,6 +6,8 @@ function verifyCredentials($conn,$user,$password){
 	$query = "select * from AUTHENTICATION where \"UnityId\"='".$user."' AND \"Password\"='".$password."'";
 	var_dump($query);
 	//echo "<br>";
+	//sleep(4);
+	//exit(0);
 	$stid = oci_parse($conn, $query);
 	oci_execute($stid);
 

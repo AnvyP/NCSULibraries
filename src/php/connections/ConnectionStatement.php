@@ -13,4 +13,6 @@ function fetchTuples($query,$conn){
 	}
 	echo "</table>\n";
 }
+
+
 ?>

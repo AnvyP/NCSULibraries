@@ -13,9 +13,10 @@ echo "<br><br>";
 $conn = null;
 require_once('../../connections/Connection.php');
 
-require_once('../../connections/ConnectionStatement.php');
-$query = "SELECT * FROM COFFEES";
-fetchTuples($query,$conn);
+require_once('update\UpdateStudentInfoUtils.php');
+$query = "SELECT * FROM STUDENT";
+$nextPage = "update/UpdateStudentInfo.php";
+fetchAndUpdateStudentInfo($query,$conn,$nextPage);
 
 //session_destroy();
 
