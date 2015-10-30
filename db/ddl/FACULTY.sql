@@ -15,5 +15,5 @@ ALTER TABLE faculty
 
 ALTER TABLE faculty
    ADD CONSTRAINT fk_faculty_1 FOREIGN KEY ("UnityId")
-       REFERENCES rnagill.librarypatron ("UnityId")
+       REFERENCES librarypatron ("UnityId")
        VALIDATE;

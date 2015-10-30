@@ -10,6 +10,15 @@ echo $_SESSION['USER'];
 echo "<br><br>";
 
 
+$conn = null;
+require_once('../../connections/Connection.php');
+
+$UnityId =  $_SESSION['USER'];
+require_once('update\UpdateFacultyInfoUtils.php');
+$query = "SELECT * FROM FACULTY, LIBRARYPATRON where FACULTY.UnityId = LIBRARYPATRON.UnityId AND FACULTY.UnityId =".$UnityId;
+$nextPage = "update/UpdateFacultyInfo.php";
+fetchAndUpdateFacultyInfo($query,$conn,$nextPage);
+
 
 
 // HINT: Use readonly attribute in input text.

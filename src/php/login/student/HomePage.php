@@ -14,7 +14,8 @@ $conn = null;
 require_once('../../connections/Connection.php');
 
 require_once('update\UpdateStudentInfoUtils.php');
-$query = "SELECT * FROM STUDENT";
+$UnityId = $_SESSION['NAME'] ;
+$query = "select * FROM STUDENT S, LIBRARYPATRON L WHERE S.\"UnityId\" = L.\"UnityId\" and S.\"UnityId\" = "."'".$UnityId."'";
 $nextPage = "update/UpdateStudentInfo.php";
 fetchAndUpdateStudentInfo($query,$conn,$nextPage);
 

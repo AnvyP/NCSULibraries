@@ -21,6 +21,7 @@ $Category = $_REQUEST['Category'];
 
 $UnityId = $_REQUEST['UnityId'];
 
+
 $query = "UPDATE STUDENT
 SET \"StudentNo\"='$StudentNo',\"Name\"='$Name',\"PhoneNo\"='$PhoneNo',\"AlternatePhoneNo\"='$AlternatePhoneNo',\"HomeAddress\"='$HomeAddress',
 \"DateOfBirth\"='$DateOfBirth',\"Sex\"='$Sex',

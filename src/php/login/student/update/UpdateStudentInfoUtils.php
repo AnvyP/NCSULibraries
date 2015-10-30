@@ -2,6 +2,7 @@
 
 function fetchAndUpdateStudentInfo($query,$conn,$nextPage){
 	$stid = oci_parse($conn, $query);
+	var_dump($query);
 	oci_execute($stid);
 
 	echo "<form action=\"$nextPage?user=STUDENT\">";
@@ -11,7 +12,11 @@ function fetchAndUpdateStudentInfo($query,$conn,$nextPage){
 		$i =1;
 		foreach ($row as $item) {
 			$column_name  = oci_field_name($stid, $i);
+			if($column_name == "UnityId" || $column_name == "Type"|| $column_name == "Balance" ){
+				echo "    <td>" . "$item". "</td>\n";
+			}else{
 			echo "    <td>" . "<input type=\"text\" name=\"$column_name\" value=\"$item\" >". "</td>\n";
+			}
 			$i++;
 		}
 		echo "</tr>\n";
@@ -19,8 +24,6 @@ function fetchAndUpdateStudentInfo($query,$conn,$nextPage){
 	echo "</table>\n";
 	echo "<input type=\"submit\" value=\"Update\">";
 	echo "</form>";
-	
-	
 	
 }
 
