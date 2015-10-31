@@ -8,18 +8,21 @@ function fetchAndUpdateStudentInfo($query,$conn,$nextPage){
 	echo "<form action=\"$nextPage?user=STUDENT\">";
 	echo "<table border='1'>\n";
 	while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-		echo "<tr>\n";
+
 		$i =1;
 		foreach ($row as $item) {
+			echo "<tr>\n";
 			$column_name  = oci_field_name($stid, $i);
+			echo "<td> $column_name </td>\n";
 			if($column_name == "UnityId" || $column_name == "Type"|| $column_name == "Balance" ){
 				echo "    <td>" . "$item". "</td>\n";
 			}else{
 			echo "    <td>" . "<input type=\"text\" name=\"$column_name\" value=\"$item\" >". "</td>\n";
 			}
 			$i++;
+
+			echo "</tr>\n";
 		}
-		echo "</tr>\n";
 	}
 	echo "</table>\n";
 	echo "<input type=\"submit\" value=\"Update\">";
