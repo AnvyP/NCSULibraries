@@ -10,7 +10,7 @@ function get_no_request_sql($UnityId) {
        WHERE (p.\"TYPE\", p.\"IDENTIFIER\") IN
                 (SELECT w.\"Type\", w.\"Identifier\"
                    FROM ALAKSHM6.PUBLICATION_WAITLIST w
-                  WHERE w.\"UnityId\" = $UnityId
+                  WHERE w.\"UnityId\" = '{$UnityId}'
                  UNION
                  SELECT d.\"Type\", d.\"Identifier\"
                    FROM PUBLICATION_DETAILS d
@@ -24,7 +24,7 @@ function get_no_request_sql($UnityId) {
                                               (SELECT e.\"CourseID\"
                                                  FROM ENROLLS e
                                                 WHERE     e.\"UnityID\" =
-                                                             $UnityId
+                                                             '{$UnityId}'
                                                       AND SYSTIMESTAMP BETWEEN e.\"StartDate\"
                                                                            AND e.\"EndDate\"))
                  UNION
@@ -33,8 +33,8 @@ function get_no_request_sql($UnityId) {
                   WHERE p2.\"ID\" IN
                            (SELECT c.\"ID\"
                               FROM PUBLICATION_CHECKOUT c
-                             WHERE     c.\"UnityId\" = $UnityId
-                                   AND c.\"ReturnDate\" <> '12/31/9999'))";
+                             WHERE     c.\"UnityId\" = '{$UnityId}'
+                                   AND c.\"ReturnDate\" <> CAST('31/12/9999' AS TIMESTAMP))";
 }
 
 function get_can_be_checked_out_sql($UnityId) {
@@ -55,7 +55,7 @@ function get_can_be_checked_out_sql($UnityId) {
        WHERE (p1.\"TYPE\", p1.\"IDENTIFIER\") IN
                 (SELECT w.\"Type\", w.\"Identifier\"
                    FROM ALAKSHM6.PUBLICATION_WAITLIST w
-                  WHERE w.\"UnityId\" = $UnityId
+                  WHERE w.\"UnityId\" = '{$UnityId}'
                  UNION
                  SELECT d.\"Type\", d.\"Identifier\"
                    FROM PUBLICATION_DETAILS d
@@ -69,7 +69,7 @@ function get_can_be_checked_out_sql($UnityId) {
                                               (SELECT e.\"CourseID\"
                                                  FROM ENROLLS e
                                                 WHERE     e.\"UnityID\" =
-                                                             in_unityid
+                                                             '{$UnityId}'
                                                       AND SYSTIMESTAMP BETWEEN e.\"StartDate\"
                                                                            AND e.\"EndDate\"))
                  UNION
@@ -78,8 +78,8 @@ function get_can_be_checked_out_sql($UnityId) {
                   WHERE p2.\"ID\" IN
                            (SELECT c.\"ID\"
                               FROM PUBLICATION_CHECKOUT c
-                             WHERE     c.\"UnityId\" = $UnityId
-                                   AND c.\"ReturnDate\" <> '12/31/9999'))";
+                             WHERE     c.\"UnityId\" = '{$UnityId}'
+                                   AND c.\"ReturnDate\" <> CAST('31/12/9999' AS TIMESTAMP))";
 }
 
 function get_add_to_waitlist_sql($UnityId,$conn) {
@@ -100,7 +100,7 @@ function get_add_to_waitlist_sql($UnityId,$conn) {
        WHERE (p1.\"TYPE\", p1.\"IDENTIFIER\") IN
                 (SELECT w.\"Type\", w.\"Identifier\"
                    FROM ALAKSHM6.PUBLICATION_WAITLIST w
-                  WHERE w.\"UnityId\" = $UnityId
+                  WHERE w.\"UnityId\" = '{$UnityId}'
                  UNION
                  SELECT d.\"Type\", d.\"Identifier\"
                    FROM PUBLICATION_DETAILS d
@@ -114,7 +114,7 @@ function get_add_to_waitlist_sql($UnityId,$conn) {
                                               (SELECT e.\"CourseID\"
                                                  FROM ENROLLS e
                                                 WHERE     e.\"UnityID\" =
-                                                             $UnityId
+                                                             '{$UnityId}'
                                                       AND SYSTIMESTAMP BETWEEN e.\"StartDate\"
                                                                            AND e.\"EndDate\"))
                  UNION
@@ -123,8 +123,8 @@ function get_add_to_waitlist_sql($UnityId,$conn) {
                   WHERE p2.\"ID\" IN
                            (SELECT c.\"ID\"
                               FROM PUBLICATION_CHECKOUT c
-                             WHERE     c.\"UnityId\" = $UnityId
-                                   AND c.\"ReturnDate\" <> '12/31/9999'))";
+                             WHERE     c.\"UnityId\" = '{$UnityId}'
+                                   AND c.\"ReturnDate\" <> CAST('31/12/9999' AS TIMESTAMP))";
 	var_dump($sql);
 	$add_to_waitlist_query = oci_parse($conn, $sql);
     oci_execute($add_to_waitlist_query);
