@@ -28,7 +28,7 @@ echo "<table border='1'>
 <th> IDENTIFIER </th>
 <th> LOCATION </th>	
 <th> IS_AVAILABLE </th>
-<th> ID </th>
+<th> Actions </th>
 		
 </tr>";
 
@@ -39,9 +39,7 @@ foreach($add_to_waitlist as $row) {
 	echo "<td>".$row['IDENTIFIER']."</td>";
 	echo "<td>".$row['Location']."</td>";
 	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<tr href=\"../../../login/Login.php\">
-      <td>Add to Waitlist</td>
-    </tr>";
+	echo "<td><a href=\"www.google.com\">hello world</a></td>";
 	echo "</tr>";	
 }
 
