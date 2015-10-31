@@ -11,7 +11,8 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-$query = "select PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD 
+$query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" 
+		from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD 
 		where P.\"ID\"=PC.\"ID\" AND P.\"IDENTIFIER\"=PD.\"Identifier\" AND  P.\"TYPE\"=PD.\"Type\" AND PC.\"UnityId\"='".$UnityId."'";
 var_dump($query);
 $stid = oci_parse($conn, $query);
@@ -26,6 +27,10 @@ echo "<table border =\"2\">";
 echo "<tr>";
 echo "<td>";
 echo "ISBN : ";
+echo "</td>";
+
+echo "<td>";
+echo "TITLE : ";
 echo "</td>";
 
 echo "<td>";
@@ -45,8 +50,13 @@ echo "</tr>";
 
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo "<tr>";
+	
 	echo "<td>";
-	echo $row['ID'];
+	echo $row['Identifier'];
+	//TODO: add link to the book
+	echo "</td>";
+	echo "<td>";
+	echo $row['Title'];
 	//TODO: add link to the book
 	echo "</td>";
 	
