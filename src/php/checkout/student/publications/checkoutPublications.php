@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['NAME'])){
-	header('Location: ../index.php');
+	header('Location: ../../../login/index.php');
 	echo "Some thing wrong with session";
 }
 
@@ -11,9 +11,9 @@ echo "<br><br>";
 echo $_SESSION['USER'];
 echo "<br><br>";
 $conn = null;
-require_once('../../connections/Connection.php');
+require_once('../../../connections/Connection.php');
 
-require_once('update\UpdateStudentInfoUtils.php');
+//require_once('update\UpdateStudentInfoUtils.php');
 $UnityId = $_SESSION['NAME'] ;
 
 $no_request = get_no_request_sql($UnityId);

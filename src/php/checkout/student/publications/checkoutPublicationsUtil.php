@@ -1,6 +1,6 @@
 <?php
 $conn = null;
-require_once('../../connections/Connection.php');
+require_once('../../../connections/Connection.php');
 function get_no_request_sql($UnityId) {
 	return "SELECT p.\"ID\",
              p.\"TYPE\",
