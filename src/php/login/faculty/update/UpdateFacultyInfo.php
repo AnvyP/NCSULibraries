@@ -9,15 +9,14 @@ require_once('../../../connections/Connection.php');
 $FacultyNo = $_REQUEST['FacultyNo'];//
 $Name = $_REQUEST['Name'];//
 $Nationality = $_REQUEST['Nationality'];//
-$Department = $_REQUEST['Department'];//
-$Category = $_REQUEST['Category'];//
+//$Department = $_REQUEST['Department'];//
+//$Category = $_REQUEST['Category'];//
 
-$UnityId = $_REQUEST['UnityId'];//
+$UnityId = $_SESSION['NAME'];//
 
-$query = "UPDATE STUDENT
-SET \"FacultyNo\"='$FacultyNo',\"Name\"='$Name',
-\"Nationality\"='$Nationality',\"Department\"='$Department',
-\"Category\"='$Category'
+$query = "UPDATE LIBRARYPATRON
+SET \"Name\"='$Name',
+\"Nationality\"='$Nationality'
  WHERE \"UnityId\"='$UnityId'";
 var_dump($query);
 $stid = oci_parse($conn, $query);
