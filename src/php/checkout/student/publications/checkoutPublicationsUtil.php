@@ -108,7 +108,7 @@ function get_add_to_waitlist_sql($UnityId,$conn) {
                         AND d.\"Identifier\" IN
                                (SELECT r.\"Title\"
                                   FROM RESERVES r
-                                 WHERE     SYSTIMESTAMP BETWEEN r.\"StartTime\
+                                 WHERE     SYSTIMESTAMP BETWEEN r.\"StartTime\"
                                                             AND r.\"ExpiryTime\"
                                        AND r.\"CourseId\" NOT IN
                                               (SELECT e.\"CourseID\"
