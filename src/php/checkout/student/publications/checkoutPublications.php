@@ -33,13 +33,13 @@ echo "<table border='1'>
 
 foreach($add_to_waitlist as $row) {
 	echo "<tr>";
-	echo "<td>".row['ID']."</td>";
-	echo "<td>".row['TYPE']."</td>";
-	echo "<td>".row['IDENTIFIER']."</td>";
-	echo "<td>".row['Location']."</td>";
-	echo "<td>".row['IsAvailable']."</td>";
+	echo "<td>".$row['ID']."</td>";
+	echo "<td>".$row['TYPE']."</td>";
+	echo "<td>".$row['IDENTIFIER']."</td>";
+	echo "<td>".$row['Location']."</td>";
+	echo "<td>".$row['IsAvailable']."</td>";
 	echo "<tr href=\"../../../login/Login.php\">
-      <td>Google</td>
+      <td>Add to Waitlist</td>
     </tr>";
 	echo "</tr>";	
 }
