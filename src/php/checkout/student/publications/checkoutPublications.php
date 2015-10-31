@@ -12,7 +12,7 @@ echo $_SESSION['USER'];
 echo "<br><br>";
 $conn = null;
 require_once('../../../connections/Connection.php');
-
+require_once('checkoutPublicationsUtil.php');
 //require_once('update\UpdateStudentInfoUtils.php');
 $UnityId = $_SESSION['NAME'] ;
 
