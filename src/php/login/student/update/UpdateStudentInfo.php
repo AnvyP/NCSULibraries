@@ -4,9 +4,9 @@ session_start();
 //Classification,DegreeProgram,Category
 $conn = null;
 require_once('../../../connections/Connection.php');
-
-
-$StudentNo = $_REQUEST['StudentNo'];
+var_dump($_POST);
+var_dump($_GET);
+//$StudentNo = $_REQUEST['StudentNo'];
 $Name = $_REQUEST['Name'];
 $PhoneNo = $_REQUEST['PhoneNo'];
 $AlternatePhoneNo = $_REQUEST['AlternatePhoneNo'];
@@ -14,20 +14,18 @@ $HomeAddress = $_REQUEST['HomeAddress'];
 $DateOfBirth = $_REQUEST['DateOfBirth'];
 $Sex = $_REQUEST['Sex'];
 $Nationality = $_REQUEST['Nationality'];
-$Department = $_REQUEST['Department'];
+//$Department = $_REQUEST['Department'];
 //$Classification = $_REQUEST['Classification'];
-$DegreeProgram = $_REQUEST['DegreeProgram'];
-$Category = $_REQUEST['Category'];
+//$DegreeProgram = $_REQUEST['DegreeProgram'];
+//$Category = $_REQUEST['Category'];
 
 $UnityId = $_SESSION['NAME'];
 
 
 $query = "UPDATE STUDENT
-SET \"StudentNo\"='$StudentNo',\"PhoneNo\"='$PhoneNo',
+SET \"PhoneNo\"='$PhoneNo',
 \"AlternatePhoneNo\"='$AlternatePhoneNo',\"HomeAddress\"='$HomeAddress',
-\"DateOfBirth\"='$DateOfBirth',\"Sex\"='$Sex',
-\"DegreeProgram\"='$DegreeProgram',
-\"Category\"='$Category'
+\"DateOfBirth\"='$DateOfBirth',\"Sex\"='$Sex'
  WHERE \"UnityId\"='$UnityId'";
 var_dump($query);
 $stid = oci_parse($conn, $query);
@@ -40,7 +38,7 @@ if (!$result) {
 }
 
 $query = "UPDATE LIBRARYPATRON 
-		SET \"Name\"='$Name',\"Nationality\"='$Nationality',\"Department\"='$Department' 
+		SET \"Name\"='$Name',\"Nationality\"='$Nationality' 
 		WHERE \"UnityId\"='$UnityId'		";
 var_dump($query);
 $stid = oci_parse($conn, $query);

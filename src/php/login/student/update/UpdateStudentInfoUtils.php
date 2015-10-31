@@ -14,8 +14,12 @@ function fetchAndUpdateStudentInfo($query,$conn,$nextPage){
 			echo "<tr>\n";
 			$column_name  = oci_field_name($stid, $i);
 			echo "<td> $column_name </td>\n";
-			if($column_name == "UnityId" || $column_name == "Type"|| $column_name == "Balance" ){
+			if($column_name == "UnityId" || $column_name == "Type"|| $column_name == "Balance" 
+					|| $column_name == "StudentNo"|| $column_name == "DegreeProgram"
+							|| $column_name == "Category" || $column_name == "isHeld" || $column_name == "Department"
+									){
 				echo "    <td>" . "$item". "</td>\n";
+				$_POST[$column_name]=$item;
 			}else{
 			echo "    <td>" . "<input type=\"text\" name=\"$column_name\" value=\"$item\" >". "</td>\n";
 			}
