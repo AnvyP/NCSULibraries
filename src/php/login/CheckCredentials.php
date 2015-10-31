@@ -25,9 +25,9 @@ if(verifyCredentials($conn,$_REQUEST["NAME"],$_REQUEST["PASSWORD"])){
 	$_SESSION['USER'] = $_REQUEST["USER"];
 	
 	if($_SESSION['USER'] == "STUDENT"){
-		header('Location: student/HomePage.php');
+		header('Location: student/index.php');
 	}else{
-		header('Location: faculty/HomePage.php');
+		header('Location: faculty/index.php');
 	}
 }else{
 	// if credentials fails =>
