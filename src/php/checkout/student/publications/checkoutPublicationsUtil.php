@@ -38,7 +38,7 @@ function get_no_request_sql($UnityId) {
                                    AND c.\"ReturnDate\" <> '12/31/9999'))";
 }
 
-function can_be_checked_out_sql($UnityId) {
+function get_can_be_checked_out_sql($UnityId) {
 	return "SELECT p.\"ID\",
              p.\"TYPE\",
              p.\"IDENTIFIER\",
@@ -83,7 +83,7 @@ function can_be_checked_out_sql($UnityId) {
                                    AND c.\"ReturnDate\" <> '12/31/9999'))";
 }
 
-function get_add_to_waitlist_sql($UnityId) {
+function get_add_to_waitlist_sql($UnityId,$conn) {
 	$sql = "SELECT p.\"ID\",
              p.\"TYPE\",
              p.\"IDENTIFIER\",

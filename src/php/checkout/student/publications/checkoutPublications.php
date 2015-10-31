@@ -16,9 +16,9 @@ require_once('checkoutPublicationsUtil.php');
 //require_once('update\UpdateStudentInfoUtils.php');
 $UnityId = $_SESSION['NAME'] ;
 
-$no_request = get_no_request_sql($UnityId);
-$can_be_checked_out = get_can_be_checked_out_sql($UnityId);
-$add_to_waitlist = get_add_to_waitlist_sql($UnityId);
+$no_request = get_no_request_sql($UnityId,$conn);
+$can_be_checked_out = get_can_be_checked_out_sql($UnityId,$conn);
+$add_to_waitlist = get_add_to_waitlist_sql($UnityId,$conn);
 
 echo "<table border='1'>
 <tr>
