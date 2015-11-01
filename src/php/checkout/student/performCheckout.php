@@ -25,7 +25,7 @@ $id_sql="SELECT min(p.\"ID\") FROM PUBLICATIONS p WHERE p.\"IDENTIFIER\"='{$iden
 		AND p.\"TYPE\" = '${type}' AND p.\"IsAvailable\"='Y'";
 $result=run_sql($conn,$id_sql);
 var_dump($result);
-$reserved_sql="SELECT pd.\"isReserved\",pd.\"CopyType\" FROM PUBLICATION_DETAILS pd WHERE pd.\"Type\" = '{$type}'
+$reserved_sql="SELECT pd.\"IsReserved\",pd.\"CopyType\" FROM PUBLICATION_DETAILS pd WHERE pd.\"Type\" = '{$type}'
 				AND pd.\"Identifier\"='{$identifier}'";
 $is_reserved_result=run_sql($conn,$reserved_sql);
 var_dump($is_reserved_result);
