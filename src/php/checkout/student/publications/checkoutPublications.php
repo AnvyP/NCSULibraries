@@ -30,33 +30,38 @@ echo "<table border='1'>
 <th> Actions </th>
 		
 </tr>";
-
-foreach($add_to_waitlist as $row) {
-	echo "<tr>";
-	echo "<td>".$row['TYPE']."</td>";
-	echo "<td>".$row['IDENTIFIER']."</td>";
-	echo "<td>".$row['Location']."</td>";
-	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td><a href=\"../../student/addtoWaitlist.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Put me in Queue</a></td>";
-	echo "</tr>";	
+if(sizeof($add_to_waitlist) > 0) {
+	foreach($add_to_waitlist as $row) {
+		echo "<tr>";
+		echo "<td>".$row['TYPE']."</td>";
+		echo "<td>".$row['IDENTIFIER']."</td>";
+		echo "<td>".$row['Location']."</td>";
+		echo "<td>".$row['IsAvailable']."</td>";
+		echo "<td><a href=\"../../student/addtoWaitlist.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Put me in Queue</a></td>";
+		echo "</tr>";
+	}
+} 
+if(sizeof($can_be_checked_out) > 0) {
+	foreach($can_be_checked_out as $row) {
+		echo "<tr>";
+		echo "<td>".$row['TYPE']."</td>";
+		echo "<td>".$row['IDENTIFIER']."</td>";
+		echo "<td>".$row['Location']."</td>";
+		echo "<td>".$row['IsAvailable']."</td>";
+		echo "<td><a href=\"../../student/performCheckout.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Checkout</a></td>";
+		echo "</tr>";
+	}
 }
-foreach($can_be_checked_out as $row) {
-	echo "<tr>";
-	echo "<td>".$row['TYPE']."</td>";
-	echo "<td>".$row['IDENTIFIER']."</td>";
-	echo "<td>".$row['Location']."</td>";
-	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td><a href=\"../../student/performCheckout.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Checkout</a></td>";
-	echo "</tr>";
-}
-foreach($no_request as $row) {
-	echo "<tr>";
-	echo "<td>".$row['TYPE']."</td>";
-	echo "<td>".$row['IDENTIFIER']."</td>";
-	echo "<td>".$row['Location']."</td>";
-	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td>Not entitled for checkout now</td>";
-	echo "</tr>";
+if(sizeof($no_request) > 0) {
+	foreach($no_request as $row) {
+		echo "<tr>";
+		echo "<td>".$row['TYPE']."</td>";
+		echo "<td>".$row['IDENTIFIER']."</td>";
+		echo "<td>".$row['Location']."</td>";
+		echo "<td>".$row['IsAvailable']."</td>";
+		echo "<td>Not entitled for checkout now</td>";
+		echo "</tr>";
+	}
 }
 
 //session_destroy();
