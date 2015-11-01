@@ -144,7 +144,7 @@ function run_sql($conn,$sql) {
 	var_dump($result);
 	if (!$result) {
 		echo oci_error();
-		return false;
+		return null;
 	}else{
 		return $result;
 	}
