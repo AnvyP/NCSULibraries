@@ -1,6 +1,6 @@
 <?php
 require_once('../../../connections/Connection.php');
-function get_no_request_sql($UnityId) {
+function get_no_request_sql($UnityId,$conn) {
 	return "SELECT p.\"ID\",
              p.\"TYPE\",
              p.\"IDENTIFIER\",
@@ -38,7 +38,7 @@ function get_no_request_sql($UnityId) {
 	return run_sql($conn,$sql);
 }
 
-function get_can_be_checked_out_sql($UnityId) {
+function get_can_be_checked_out_sql($UnityId,$conn) {
 	return "SELECT p.\"ID\",
              p.\"TYPE\",
              p.\"IDENTIFIER\",
