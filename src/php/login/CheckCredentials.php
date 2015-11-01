@@ -22,8 +22,7 @@ if(verifyCredentials($conn,$_REQUEST["NAME"],$_REQUEST["PASSWORD"])){
 	// if credentials are okay then.
 	session_start();
 	$_SESSION['NAME'] = $_REQUEST["NAME"];
-	$_SESSION['USER'] = $_REQUEST["USER"];
-	
+	$_SESSION['USER'] = $_REQUEST["USER"];	
 	if($_SESSION['USER'] == "STUDENT"){
 		header('Location: student/index.php');
 	}else{
