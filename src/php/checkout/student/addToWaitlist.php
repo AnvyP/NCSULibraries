@@ -27,7 +27,7 @@ $result=run_sql($conn,$max_waitlist_sql);
 var_dump($result);
 
 if(sizeof($result) == 1) {
-	$waitlist_No=$result[0]['Waitlist_No'];
+	$waitlist_No=$result[0]['WAITLIST_NO'];
 	$insert_sql="INSERT INTO PUBLICATION_WAITLIST VALUES('{$UnityId}','{$identifier}','{$type}',$waitlist_No)";
 	$parsed = oci_parse($conn,$insert_sql);
 	oci_execute($parsed);

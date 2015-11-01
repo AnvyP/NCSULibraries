@@ -29,8 +29,8 @@ $reserved_sql="SELECT pd.\"IsReserved\" as isReserved,pd.\"CopyType\" as CopyTyp
 				AND pd.\"Identifier\"='{$identifier}'";
 $is_reserved_result=run_sql($conn,$reserved_sql);
 var_dump($is_reserved_result);
-$is_reserved=$is_reserved_result[0]['isReserved'];
-$copy_type=$is_reserved_result[0]['CopyType'];
+$is_reserved=$is_reserved_result[0]['ISRESERVED'];
+$copy_type=$is_reserved_result[0]['COPYTYPE'];
 
 $duration = get_checkout_duration($type,$userType,$copy_type);
 if(sizeof($result) == 1) {
