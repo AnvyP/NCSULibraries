@@ -1,5 +1,5 @@
 <?php
-require_once('../../../connections/Connection.php');
+//require_once('../../../connections/Connection.php');
 function get_no_request_sql($UnityId,$conn) {
 	$sql = "SELECT DISTINCT
              p.\"TYPE\",
