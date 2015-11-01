@@ -42,7 +42,7 @@ if(sizeof($result) == 1) {
 	oci_execute($parsed);
 }
 
-function get_checkout_duration($publication_type,$userType,$copy_type){
+function get_checkout_duration($publication_type,$userType,$copy_type,$is_reserved){
 	if($copy_type=='Electronic') $duration = "CAST('31/DEC/9999' AS TIMESTAMP)";
 	else {
 		if($publication_type == 'Books') {
