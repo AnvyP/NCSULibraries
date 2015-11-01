@@ -1,7 +1,7 @@
 <?php
 echo "<form action=\"CheckCredentials.php?user=STUDENT\">
   UNITY ID:<br>
-  <input type=\"text\" name=\"Name\" value=\" \">
+  <input type=\"text\" name=\"Name\" value=\"\">
   <br>
   PASSWORD:<br>
   <input type=\"password\" name=\"PASSWORD\" value=\"\">
