@@ -40,10 +40,13 @@ if(sizeof($result) == 1) {
 	$insert_sql="INSERT INTO PUBLICATION_CHECKOUT VALUES('{$UnityId}',$id,SYSTIMESTAMP,".$duration.",CAST('31/DEC/9999' AS TIMESTAMP))";
 	$parsed = oci_parse($conn,$insert_sql);
 	oci_execute($parsed);
+	$update_sql="UPDATE PUBLICATIONS SET \"IsAvailable\"='N' where \"ID\"='{$id}'";
+	$parsedUpdate = oci_parse($conn,$update_sql);
+	oci_execute($parsedUpdate);
 }
 
 function get_checkout_duration($publication_type,$userType,$copy_type,$is_reserved){
-	if($copy_type=='Electronic') $duration = "CAST('31/DEC/9999' AS TIMESTAMP)";
+	if($copy_type == 'Electronic copy') $duration = "CAST('31/DEC/9999' AS TIMESTAMP)";
 	else {
 		if($publication_type == 'Books') {
 			if($is_reserved == 'Y')
@@ -59,7 +62,10 @@ function get_checkout_duration($publication_type,$userType,$copy_type,$is_reserv
 			$duration = "SYSTIMESTAMP + INTERVAL '12' HOUR";
 		}
 	}
-	return $duration;
+	if(isset($duration))
+		return $duration;
+	else
+		return "SYSTIMESTAMP";
 }
 
 ?>
