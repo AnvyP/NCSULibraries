@@ -34,7 +34,7 @@ if(sizeof($is_reserved_result)>0) {
 	$copy_type=$is_reserved_result[0]['COPYTYPE'];
 }
 
-$duration = get_checkout_duration($type,$userType,$copy_type);
+$duration = get_checkout_duration($type,$userType,$copy_type,$is_reserved);
 if(sizeof($result) == 1) {
 	$id = $result[0]['ID'];
 	$insert_sql="INSERT INTO PUBLICATION_CHECKOUT VALUES('{$UnityId}',$id,SYSTIMESTAMP,".$duration.",CAST('31/DEC/9999' AS TIMESTAMP))";
