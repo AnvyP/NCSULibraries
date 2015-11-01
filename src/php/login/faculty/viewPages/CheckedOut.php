@@ -59,6 +59,10 @@ echo "<td>";
 echo "ReturnDate : ";
 echo "</td>";
 
+echo "<td>";
+echo "Return  ";
+echo "</td>";
+
 echo "</tr>";
 
 
@@ -86,6 +90,11 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo $row['ReturnDate'];
 	echo "</td>";
 
+
+	echo "<td>";
+	echo "<a href= \"ReturnResource.php?id=".$row['ID']."\"> Return </a>";
+	echo "</td>";
+	
 	echo "</tr>";
 
 }
@@ -123,6 +132,10 @@ echo "<td>";
 echo "CheckoutDate : ";
 echo "</td>";
 
+echo "<td>";
+echo "Return : ";
+echo "</td>";
+
 echo "</tr>";
 
 //select CC.\"ID\" CC.\"ReturnDate\", CC.\"ReservationDate\", CC.\"CheckoutDate\", C.\"MAKE\", C.\"MODEL
@@ -153,7 +166,11 @@ while ($row = oci_fetch_array($stid2, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo "<td>";
 	echo $row['CheckoutDate'];
 	echo "</td>";
-
+	
+	echo "<td>";
+	echo "<a href= \"ReturnResource.php?id=".$row['ID']."\"> Return </a>";
+	echo "</td>";
+	
 	echo "</tr>";
 
 }
