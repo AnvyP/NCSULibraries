@@ -37,7 +37,7 @@ foreach($add_to_waitlist as $row) {
 	echo "<td>".$row['IDENTIFIER']."</td>";
 	echo "<td>".$row['Location']."</td>";
 	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td><a href=\"../../addtoWaitlist.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Put me in Queue</a></td>";
+	echo "<td><a href=\"../../student/addtoWaitlist.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Put me in Queue</a></td>";
 	echo "</tr>";	
 }
 foreach($can_be_checked_out as $row) {
@@ -46,7 +46,7 @@ foreach($can_be_checked_out as $row) {
 	echo "<td>".$row['IDENTIFIER']."</td>";
 	echo "<td>".$row['Location']."</td>";
 	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td><a href=\"../../performCheckout.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Checkout</a></td>";
+	echo "<td><a href=\"../../student/performCheckout.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Checkout</a></td>";
 	echo "</tr>";
 }
 foreach($no_request as $row) {
