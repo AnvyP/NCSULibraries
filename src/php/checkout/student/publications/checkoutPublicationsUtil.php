@@ -1,7 +1,7 @@
 <?php
 require_once('../../../connections/Connection.php');
 function get_no_request_sql($UnityId,$conn) {
-	return "SELECT p.\"ID\",
+	$sql = "SELECT p.\"ID\",
              p.\"TYPE\",
              p.\"IDENTIFIER\",
              p.\"Location\",
@@ -39,7 +39,7 @@ function get_no_request_sql($UnityId,$conn) {
 }
 
 function get_can_be_checked_out_sql($UnityId,$conn) {
-	return "SELECT p.\"ID\",
+	$sql = "SELECT p.\"ID\",
              p.\"TYPE\",
              p.\"IDENTIFIER\",
              p.\"Location\",
