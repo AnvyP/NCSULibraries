@@ -35,6 +35,7 @@ function get_no_request_sql($UnityId) {
                               FROM PUBLICATION_CHECKOUT c
                              WHERE     c.\"UnityId\" = '{$UnityId}'
                                    AND c.\"ReturnDate\" <> CAST('31/DEC/9999' AS TIMESTAMP)))";
+	return run_sql($conn,$sql);
 }
 
 function get_can_be_checked_out_sql($UnityId) {
@@ -80,6 +81,7 @@ function get_can_be_checked_out_sql($UnityId) {
                               FROM PUBLICATION_CHECKOUT c
                              WHERE     c.\"UnityId\" = '{$UnityId}'
                                    AND c.\"ReturnDate\" <> CAST('31/DEC/9999' AS TIMESTAMP)))";
+	return run_sql($conn,$sql);
 }
 
 function get_add_to_waitlist_sql($UnityId,$conn) {
@@ -125,20 +127,23 @@ function get_add_to_waitlist_sql($UnityId,$conn) {
                               FROM PUBLICATION_CHECKOUT c
                              WHERE     c.\"UnityId\" = '{$UnityId}'
                                    AND c.\"ReturnDate\" <> CAST('31/DEC/9999' AS TIMESTAMP)))";
+	return run_sql($conn,$sql);
+}
+
+function run_sql($conn,$sql) {
 	var_dump($sql);
-	$add_to_waitlist_query = oci_parse($conn, $sql);
-    oci_execute($add_to_waitlist_query);
-    $nrows = oci_fetch_all($add_to_waitlist_query, $result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-    
-    echo "$nrows rows fetched<br>\n";
-    var_dump($result);
-    //exit(0);
-    if (!$result) {
-    echo oci_error();
-    }else{
-    	return $result;
-    }
+	$query = oci_parse($conn, $sql);
+	oci_execute($query);
+	$nrows = oci_fetch_all($query, $result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	
+	echo "$nrows rows fetched<br>\n";
+	var_dump($result);
+	if (!$result) {
+		echo oci_error();
+		return false;
+	}else{
+		return $result;
+	}
 }
 
 ?>
