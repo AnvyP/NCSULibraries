@@ -1,7 +1,7 @@
 <?php
 require_once('../../../connections/Connection.php');
 function get_no_request_sql($UnityId,$conn) {
-	$sql = "SELECT p.\"ID\",
+	$sql = "SELECT DISTINCT
              p.\"TYPE\",
              p.\"IDENTIFIER\",
              p.\"Location\",
@@ -39,7 +39,7 @@ function get_no_request_sql($UnityId,$conn) {
 }
 
 function get_can_be_checked_out_sql($UnityId,$conn) {
-	$sql = "SELECT p.\"ID\",
+	$sql = "SELECT DISTINCT
              p.\"TYPE\",
              p.\"IDENTIFIER\",
              p.\"Location\",
@@ -47,7 +47,7 @@ function get_can_be_checked_out_sql($UnityId,$conn) {
         FROM PUBLICATIONS p
        WHERE p.\"IsAvailable\" = 'Y'
       MINUS
-      SELECT p1.\"ID\",
+      SELECT DISTINCT
              p1.\"TYPE\",
              p1.\"IDENTIFIER\",
              p1.\"Location\",
@@ -85,15 +85,19 @@ function get_can_be_checked_out_sql($UnityId,$conn) {
 }
 
 function get_add_to_waitlist_sql($UnityId,$conn) {
-	$sql = "SELECT p.\"ID\",
+	$sql = "SELECT DISTINCT
              p.\"TYPE\",
              p.\"IDENTIFIER\",
              p.\"Location\",
              p.\"IsAvailable\"
         FROM PUBLICATIONS p
        WHERE p.\"IsAvailable\" = 'N'
+       AND (p.\"TYPE\",p.\"IDENTIFIER\") NOT IN
+       		(SELECT p3.\"TYPE\",p3.\"IDENTIFIER\" 
+       		 FROM PUBLICATIONS p3
+       		 WHERE p3.\"IsAvailable\" = 'Y')
       MINUS
-      SELECT p1.\"ID\",
+      SELECT DISTINCT
              p1.\"TYPE\",
              p1.\"IDENTIFIER\",
              p1.\"Location\",

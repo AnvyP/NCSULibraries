@@ -23,7 +23,6 @@ $add_to_waitlist = get_add_to_waitlist_sql($UnityId,$conn);
 
 echo "<table border='1'>
 <tr>
-<th> ID </th>
 <th> TYPE </th>
 <th> IDENTIFIER </th>
 <th> LOCATION </th>	
@@ -34,27 +33,24 @@ echo "<table border='1'>
 
 foreach($add_to_waitlist as $row) {
 	echo "<tr>";
-	echo "<td>".$row['ID']."</td>";
 	echo "<td>".$row['TYPE']."</td>";
 	echo "<td>".$row['IDENTIFIER']."</td>";
 	echo "<td>".$row['Location']."</td>";
 	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td><a href=\"../../../login/student/HomePage.php\">Put me in Queue</a></td>";
+	echo "<td><a href=\"../../addtoWaitlist.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Put me in Queue</a></td>";
 	echo "</tr>";	
 }
 foreach($can_be_checked_out as $row) {
 	echo "<tr>";
-	echo "<td>".$row['ID']."</td>";
 	echo "<td>".$row['TYPE']."</td>";
 	echo "<td>".$row['IDENTIFIER']."</td>";
 	echo "<td>".$row['Location']."</td>";
 	echo "<td>".$row['IsAvailable']."</td>";
-	echo "<td><a href=\"../../../login/Login.php\">Checkout</a></td>";
+	echo "<td><a href=\"../../performCheckout.php?id={$row['IDENTIFIER']}&type={$row['TYPE']}\">Checkout</a></td>";
 	echo "</tr>";
 }
 foreach($no_request as $row) {
 	echo "<tr>";
-	echo "<td>".$row['ID']."</td>";
 	echo "<td>".$row['TYPE']."</td>";
 	echo "<td>".$row['IDENTIFIER']."</td>";
 	echo "<td>".$row['Location']."</td>";
