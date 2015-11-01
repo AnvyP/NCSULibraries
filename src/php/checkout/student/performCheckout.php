@@ -21,11 +21,11 @@ echo "<br><br>";
 $identifier=$_GET['id'];
 $type=$_GET['type'];
 
-$id_sql="SELECT min(p.\"ID\") FROM PUBLICATIONS p WHERE p.\"IDENTIFIER\"='{$identifier}'
+$id_sql="SELECT min(p.\"ID\") as ID FROM PUBLICATIONS p WHERE p.\"IDENTIFIER\"='{$identifier}'
 		AND p.\"TYPE\" = '${type}' AND p.\"IsAvailable\"='Y'";
 $result=run_sql($conn,$id_sql);
 var_dump($result);
-$reserved_sql="SELECT pd.\"IsReserved\",pd.\"CopyType\" FROM PUBLICATION_DETAILS pd WHERE pd.\"Type\" = '{$type}'
+$reserved_sql="SELECT pd.\"IsReserved\" as isReserved,pd.\"CopyType\" as CopyType FROM PUBLICATION_DETAILS pd WHERE pd.\"Type\" = '{$type}'
 				AND pd.\"Identifier\"='{$identifier}'";
 $is_reserved_result=run_sql($conn,$reserved_sql);
 var_dump($is_reserved_result);

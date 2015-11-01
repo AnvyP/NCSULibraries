@@ -21,7 +21,7 @@ echo "<br><br>";
 $identifier=$_GET['id'];
 $type=$_GET['type'];
 
-$max_waitlist_sql="SELECT max(pw.\"Waitlist_No\")+1 FROM PUBLICATION_WAITLIST pw WHERE pw.\"Identifier\"='{$identifier}'
+$max_waitlist_sql="SELECT max(pw.\"Waitlist_No\")+1 as Waitlist_No FROM PUBLICATION_WAITLIST pw WHERE pw.\"Identifier\"='{$identifier}'
 		AND pw.\"Type\" = '${type}' GROUP BY pw.\"Type\",pw.\"Identifier\"";
 $result=run_sql($conn,$max_waitlist_sql);
 var_dump($result);
