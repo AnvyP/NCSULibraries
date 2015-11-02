@@ -58,13 +58,43 @@ ORDER BY r.\"RoomNumber\"";
 var_dump($selectRoomQuery);
 $stid = oci_parse($conn, $selectRoomQuery);
 $result = oci_execute($stid);
+echo "<table border=\"2\">";
+echo "<tr>";
+echo "<td>";
+echo "Room No ";
+echo "</td>";
+echo "<td>";
+echo "Location ";
+echo "</td>";
+echo "<td>";
+echo" Floor ";
+echo "</td>";
+echo "<td>";
+echo" Reserve ";
+echo "</td>";
+echo "</tr>";
 while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
+	echo "<tr>";
+	echo "<td>";
+	echo $row['RoomNumber'];
+	echo "</td>";
+	echo "<td>";
+	echo $row['Location'];
+	echo "</td>";
+	echo "<td>";
+	echo $row['Floor'];
+	echo "</td>";
 
-	echo "Room Number ".$row['RoomNumber']." Location ".$row['Location']." Floor ".$row['Floor'];
-	echo"<br>";
-
+	echo "<td>";
+	echo" <a href=\"ReserveRoomFinalPage.php?ROOMNUMBER=.".$row['RoomNumber'].
+	"&LOCATION=.".$row['Location']."&FLOOR=.".$row['Floor']."&START_TIME=.".$startDateUSA.
+	"&END_TIME=.".$endDateUSA."&OCCUPANCY=.".$occupancy."\"> Reserve this book </a> ";
+	echo "</td>";
+	
+	echo "</tr>";
 }
 
+echo "</table>";
 
 
 ?>
