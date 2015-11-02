@@ -86,9 +86,9 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo "</td>";
 
 	echo "<td>";
-	echo" <a href=\"ReserveRoomFinalPage.php?ROOMNUMBER=.".$row['RoomNumber'].
-	"&LOCATION=.".$row['Location']."&FLOOR=.".$row['Floor']."&START_TIME=.".$startDateUSA.
-	"&END_TIME=.".$endDateUSA."&OCCUPANCY=.".$occupancy."\"> Reserve this book </a> ";
+	echo" <a href=\"ReserveRoomFinalPage.php?ROOMNUMBER=".$row['RoomNumber'].
+	"&LOCATION=".$row['Location']."&FLOOR=".$row['Floor']."&START_TIME=".$startDateUSA.
+	"&END_TIME=".$endDateUSA."&OCCUPANCY=".$occupancy."\"> Reserve this book </a> ";
 	echo "</td>";
 	
 	echo "</tr>";
