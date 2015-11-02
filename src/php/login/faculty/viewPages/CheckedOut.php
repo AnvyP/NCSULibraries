@@ -14,7 +14,7 @@ $UnityId = $_SESSION['NAME'];
 $query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" 
 		from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD 
 		where P.\"ID\"=PC.\"ID\" AND P.\"IDENTIFIER\"=PD.\"Identifier\" AND  
-		P.\"TYPE\"=PD.\"Type\" AND PC.\"UnityId\"='".$UnityId."'";
+		P.\"TYPE\"=PD.\"Type\" AND  AND PC.\"UnityId\"='".$UnityId."'";
 var_dump($query);
 $stid = oci_parse($conn, $query);
 $result = oci_execute($stid);
@@ -92,8 +92,8 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 
 
 	echo "<td>";
-	echo "<a href= \"ReturnResource.php?id=".$row['ID']."\"> Return </a>";
-	echo "</td>";
+	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."&IS_BOOK=Y\"> Return </a>";
+		echo "</td>";
 	
 	echo "</tr>";
 
@@ -168,7 +168,7 @@ while ($row = oci_fetch_array($stid2, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo "</td>";
 	
 	echo "<td>";
-	echo "<a href= \"ReturnResource.php?id=".$row['ID']."\"> Return </a>";
+	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."&IS_BOOK=N\"> Return </a>";
 	echo "</td>";
 	
 	echo "</tr>";
