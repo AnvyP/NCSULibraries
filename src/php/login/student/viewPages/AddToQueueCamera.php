@@ -28,7 +28,7 @@ if(sizeof($waitlist_result) > 0) {
 	$waitlistNumber = 0 ; 
 }
 $insert_to_queue_sql = "INSERT INTO CAMERA_QUEUE VALUES(
-						'{$UnityId}', 'CAST('{$checkoutDay}' AS TIMESTAMP)','{$id}',$waitlistNumber)";
+						'{$UnityId}', CAST('{$checkoutDay}' AS TIMESTAMP),'{$id}',$waitlistNumber)";
 var_dump($insert_to_queue_sql);
 $stid = oci_parse($conn,$insert_to_queue_sql);
 $result=oci_execute($stid);
