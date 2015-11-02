@@ -11,7 +11,7 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-$query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" 
+$query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" ,PD.\"Type\"
 		from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD 
 		where P.\"ID\"=PC.\"ID\" AND P.\"IDENTIFIER\"=PD.\"Identifier\" AND  
 		P.\"TYPE\"=PD.\"Type\" AND  PC.\"UnityId\"='".$UnityId."'";
@@ -92,9 +92,9 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 
 
 	echo "<td>";
-	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."&IS_BOOK=Y\"> Return </a>";
+	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&TYPE=".$row['Type']."		\"> Return </a>";
 		echo "</td>";
-	
+		
 	echo "</tr>";
 
 }
