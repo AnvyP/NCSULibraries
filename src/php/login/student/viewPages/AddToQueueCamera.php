@@ -48,7 +48,7 @@ if(!$result) {
 		echo "Error while pushing notifications";
 	else {
 		echo "$notification";
-		echo "<a href=\"viewPages/Notifications.php\">Notifications!</a>";
+		echo "<a href=\"Notifications.php\">Notifications!</a>";
 		echo "<br> <br>";
 	}
 }
