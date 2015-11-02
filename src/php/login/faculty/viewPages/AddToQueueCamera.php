@@ -20,7 +20,8 @@ $waitlist_sql = "SELECT DISTINCT cq.\"DateofQueue\",MAX(cq.\"WaitlistNumber\")+1
 				 AND cq.\"ID\" = '${id}'
 				 GROUP BY cq.\"DateOfQueue\"";
 $stid = oci_parse($conn,$waitlist_sql);
-$waitlist_result = oci_execute($stid);
+oci_execute($stid);
+oci_fetch_all($stid, $waitlist_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 if(sizeof($waitlist_result) > 0) {
 	$waitlistNumber = $waitlist_result[0]['WAITLIST_NO'];
 } else {
@@ -30,7 +31,8 @@ $insert_to_queue_sql = "INSERT INTO CAMERA_QUEUE VALUES(
 						'{$UnityId}', CAST('{$checkoutDay}' AS TIMESTAMP),'{$id}',$waitlistNumber)";
 
 $stid = oci_parse($conn,$insert_to_queue_sql);
-$insert_to_queue_result = oci_execute($stid);
+oci_execute($stid);
+oci_fetch_all($stid, $insert_to_queue_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 if(!$insert_to_queue_result) {
 	echo "Error while adding to queue";
 } else {
@@ -42,7 +44,8 @@ if(!$insert_to_queue_result) {
 	$insert_to_notification_sql = "INSERT INTO NOTIFICATION VALUES(
 									'{$UnityId}',SYSTIMESTAMP,'{$notification}'";
 	$stid = oci_parse($conn,$insert_to_notification_sql);
-	$insert_to_notification_result = oci_execute($stid);
+	oci_execute($stid);
+	oci_fetch_all($stid, $insert_to_notification_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	if(!$insert_to_notification_result) 
 		echo "Error while pushing notifications";
 	else {

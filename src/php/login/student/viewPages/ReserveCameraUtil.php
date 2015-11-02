@@ -22,7 +22,8 @@ $checkoutDateUSA=date_format(date_timestamp_set($date, $from_time),'d/M/Y h:i:s 
 $check_if_friday_sql="SELECT TO_CHAR(CAST('{$checkoutDateUSA}' AS TIMESTAMP),'D') as DAY  from dual";
 var_dump($check_if_friday_sql);
 $stid = oci_parse($conn, $check_if_friday_sql);
-$check_if_friday_result = oci_execute($stid);
+oci_execute($stid);
+oci_fetch_all($stid, $check_if_friday_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 var_dump($check_if_friday_result);
 if($check_if_friday_result[0]['DAY'] != 6){
 	echo "Checkouts are allowed only on Fridays. Select the checkout date for a Friday.";
