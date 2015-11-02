@@ -32,7 +32,6 @@ $insert_to_queue_sql = "INSERT INTO CAMERA_QUEUE VALUES(
 var_dump($insert_to_queue_sql);
 $stid = oci_parse($conn,$insert_to_queue_sql);
 $result=oci_execute($stid);
-oci_fetch_all($stid, $insert_to_queue_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 if(!$result) {
 	echo "Error while adding to queue";
 } else {
@@ -42,10 +41,9 @@ if(!$result) {
 		$notification = "Camera with ID ".$id." has been reserved for ".$checkoutDay."with waitlist number ".$waitlistNumber.". You will be informed if it becomes available.";
 	
 	$insert_to_notification_sql = "INSERT INTO NOTIFICATION VALUES(
-									'{$UnityId}',SYSTIMESTAMP,'{$notification}'";
+									'{$UnityId}',SYSTIMESTAMP,'{$notification}')";
 	$stid = oci_parse($conn,$insert_to_notification_sql);
 	$result=oci_execute($stid);
-	oci_fetch_all($stid, $insert_to_notification_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 	if(!$result) 
 		echo "Error while pushing notifications";
 	else {
