@@ -35,7 +35,8 @@ if (!$result) {
 	echo oci_error();
 }else{
 	//working fine.
-	echo "ROOM  $RoomNumber RESERVED, LOCATION: $Location, START_TIME: $startTime, END_TIME : $endTime";
+	echo "ROOM  $RoomNumber RESERVED<br><br> LOCATION: $Location<br><br> START_TIME: $startTime<br><br> END_TIME : $endTime";
+	echo "<br><br><a href=\"../index.php\"> HomePage </a>";
 }
 
 

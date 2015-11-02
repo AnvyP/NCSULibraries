@@ -23,4 +23,13 @@ echo "<br> <br>";
 echo "<a href=\"viewPages/ReserveRoom.php\">Reserve Room!</a>";
 echo "<br> <br>";
 
+
+echo "<a href=\"viewPages/RoomCheckInCheckout.php\">Room CheckIn And Checkout!</a>";
+echo "<br> <br>";
+
+
+echo "<a href=\"viewPages/ReserveCamera.php\">Reserve Camera!</a>";
+echo "<br> <br>";
+
+
 ?>
