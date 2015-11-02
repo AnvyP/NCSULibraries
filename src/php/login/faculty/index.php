@@ -16,4 +16,7 @@ echo "<br> <br>";
 echo "<a href=\"viewPages/Notifications.php\">Notifications!</a>";
 echo "<br> <br>";
 
+echo "<a href=\"viewPages/ReserveRoom.php\">Reserve Room!</a>";
+echo "<br> <br>";
+
 ?>
