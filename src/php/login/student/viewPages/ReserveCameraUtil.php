@@ -23,9 +23,10 @@ $check_if_friday_sql="SELECT TO_CHAR(CAST('{$checkoutDateUSA}' AS TIMESTAMP),'D'
 var_dump($check_if_friday_sql);
 $stid = oci_parse($conn, $check_if_friday_sql);
 $check_if_friday_result = oci_execute($stid);
+var_dump($check_if_friday_result);
 if($check_if_friday_result[0]['DAY'] != 6){
 	echo "Checkouts are allowed only on Fridays. Select the checkout date for a Friday.";
-	echo "<td><a href=\"ReserverCamera.php\">Back to Date Selection</a></td>";
+	echo "<td><a href=\"ReserveCamera.php\">Back to Date Selection</a></td>";
 }
 else {			
 		
