@@ -40,16 +40,25 @@ var_dump($updateCameraQuery);
 
 // check if there are ppl in waitListQueue for The same TYPE,same $IDENTIFER
 
-$queryWaitList = "select UnityId from PUBLICATION_WAITLIST where \"Identifier\"='$IDENTIFER' AND \"Type\"='$TYPE'";
-$stid1 = oci_parse($conn, $query1);
-$result1 = oci_execute($stid);
+$queryWaitList = "select \"UnityId\" from PUBLICATION_WAITLIST where \"Identifier\"='$IDENTIFER' AND \"Type\"='$TYPE'";
+var_dump($queryWaitList);
+
+
+$stid = oci_parse($conn, $queryWaitList);
+$result1=oci_execute($stid);
+
+$noOfRows = oci_fetch_all($stid, $res);
+oci_free_statement($stid);
+
+
 if (!$result1) {
 	echo oci_error();
 }else{
 	//working fine.
 }
 
-$noOfRows=oci_num_rows ($stid1);
+
+echo "for previous PUBILCATION_WAITLIST select query - $noOfRows";
 
 $query1 =null;
 
