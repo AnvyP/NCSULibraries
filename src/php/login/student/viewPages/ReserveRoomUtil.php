@@ -18,7 +18,7 @@ $endDay = $_REQUEST['endDate'];
 $endTime = $_REQUEST['endTime'];
 
 $occupancy = $_REQUEST['occupancy'];
-$type = $_REQUEST['type'];
+$type = "Study";
 echo "$UnityId $startDay $startTime  $endDay $endTime $occupancy";
 echo "<br> <br>";
 $from_time = strtotime($startDay." ".$startTime);
@@ -34,9 +34,9 @@ echo "<br><br>";
 
 $date = date_create();
 date_format($date,'m-d-Y H:i:s');
-$startDateUSA=date_format(date_timestamp_set($date, $from_time),'d/M/Y H:i:s');
+$startDateUSA=date_format(date_timestamp_set($date, $from_time),'d/M/Y h:i:s A');
 
-$endDateUSA=date_format(date_timestamp_set($date, $to_time),'d/M/Y H:i:s');
+$endDateUSA=date_format(date_timestamp_set($date, $to_time),'d/M/Y h:i:s A');
 
 
 echo "startDateTime " .$startDateUSA . "\n";

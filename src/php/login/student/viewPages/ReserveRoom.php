@@ -38,12 +38,9 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 }
 echo "</select>";
 echo "<br><br>";
-echo "Type of room";
+// echo "<input type=\"radio\" name=\"type\" value=\"Conference\">Conference Room<br>";
 
-echo "<br><br>";
-echo "<input type=\"radio\" name=\"type\" value=\"Conference\">Conference Room<br>";
-
-echo "<input type=\"radio\" name=\"type\" value=\"Study\">study Room<br>";
+// echo "<input type=\"radio\" name=\"type\" value=\"Study\">study Room<br>";
 echo "<br><br>";
 echo "<input type=\"submit\">";
 echo "<br><br>";

@@ -12,14 +12,14 @@ echo "<table border=\"1\"   align=\"center\" \">";
 
 echo "<tr>";
 echo "<td>";
-echo "<a href=\"Login.php?USER=STUDENT\">STUDENT LOGIN </a>";
+echo "<a href=\"Login.php?USER=Student\">STUDENT LOGIN </a>";
 
 echo "</td>";
 echo "</tr>";
 
 echo "<tr>";
 echo "<td>";
-echo "<a href=\"Login.php?USER=FACULTY\">FACULTY LOGIN </a>";
+echo "<a href=\"Login.php?USER=Faculty\">FACULTY LOGIN </a>";
 echo "</td>";
 
 echo "</tr>";

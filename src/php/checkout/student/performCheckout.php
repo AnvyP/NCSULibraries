@@ -22,11 +22,11 @@ $identifier=$_GET['id'];
 $type=$_GET['type'];
 
 $id_sql="SELECT min(p.\"ID\") as ID FROM PUBLICATIONS p WHERE p.\"IDENTIFIER\"='{$identifier}'
-		AND p.\"TYPE\" = '${type}' AND p.\"IsAvailable\"='Y'";
+AND p.\"TYPE\" = '${type}' AND p.\"IsAvailable\"='Y'";
 $result=run_sql($conn,$id_sql);
 var_dump($result);
 $reserved_sql="SELECT pd.\"IsReserved\" as isReserved,pd.\"CopyType\" as CopyType FROM PUBLICATION_DETAILS pd WHERE pd.\"Type\" = '{$type}'
-				AND pd.\"Identifier\"='{$identifier}'";
+AND pd.\"Identifier\"='{$identifier}'";
 $is_reserved_result=run_sql($conn,$reserved_sql);
 var_dump($is_reserved_result);
 if(sizeof($is_reserved_result)>0) {
@@ -46,22 +46,47 @@ if(sizeof($result) == 1) {
 }
 
 function get_checkout_duration($publication_type,$userType,$copy_type,$is_reserved){
-	if($copy_type == 'Electronic copy') $duration = "CAST('31/DEC/9999' AS TIMESTAMP)";
+	echo "<br> <br> TESTDEBUG -- 0 <br>";
+	var_dump($publication_type,$userType,$copy_type,$is_reserved);
+	$duration =null;
+	if($copy_type == 'Electronic copy'){
+		$duration = "CAST('31/DEC/9999' AS TIMESTAMP)";
+	}
 	else {
+		echo "<br> TESTDEBUG -- 1";
+		var_dump($duration,$publication_type,$userType,$copy_type,$is_reserved);
 		if($publication_type == 'Books') {
-			if($is_reserved == 'Y')
+			if($is_reserved == 'Y'){
 				$duration = "SYSTIMESTAMP + INTERVAL '4' HOUR";
+
+				echo "<br> TESTDEBUG -- 2";
+				var_dump($duration);
+			}
 			else {
-				if($userType == 'Faculty')
+				if($userType == 'Faculty'){
 					$duration = "SYSTIMESTAMP + INTERVAL '720' HOUR";
-				else if($userType == 'Student')
+					echo "<br> TESTDEBUG -- 3";
+					var_dump($duration);
+				}
+				else if($userType == 'Student'){
 					$duration = "SYSTIMESTAMP + INTERVAL '360' HOUR";
+
+					echo "<br> TESTDEBUG -- 4";
+					var_dump($duration);
+				}
 			}
 		}
 		else if($publication_type=='Journals' ||  $publication_type=='Conferences') {
 			$duration = "SYSTIMESTAMP + INTERVAL '12' HOUR";
+
+			echo "<br> TESTDEBUG -- 5";
+			var_dump($duration);
 		}
 	}
+
+	echo "<br> TESTDEBUG -- 6";
+	var_dump($duration);
+	
 	if(isset($duration))
 		return $duration;
 	else

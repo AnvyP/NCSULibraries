@@ -22,17 +22,15 @@ $identifier=$_GET['id'];
 $type=$_GET['type'];
 
 $max_waitlist_sql="SELECT max(pw.\"Waitlist_No\")+1 as Waitlist_No FROM PUBLICATION_WAITLIST pw WHERE pw.\"Identifier\"='{$identifier}'
-		AND pw.\"Type\" = '${type}' GROUP BY pw.\"Type\",pw.\"Identifier\"";
+AND pw.\"Type\" = '${type}' GROUP BY pw.\"Type\",pw.\"Identifier\"";
 $result=run_sql($conn,$max_waitlist_sql);
 var_dump($result);
 
-if(sizeof($result) == 1) {
-	$waitlist_No=$result[0]['WAITLIST_NO'];
-	$insert_sql="INSERT INTO PUBLICATION_WAITLIST VALUES('{$UnityId}','{$identifier}','{$type}',$waitlist_No)";
-	$parsed = oci_parse($conn,$insert_sql);
-	oci_execute($parsed);
-} else {
-	echo "No records returned";
-}
+$waitlist_No=isset($result[0]['WAITLIST_NO'])==true?$result[0]['WAITLIST_NO']:1;
+$insert_sql="INSERT INTO PUBLICATION_WAITLIST VALUES('{$UnityId}','{$identifier}','{$type}',$waitlist_No)";
+$parsed = oci_parse($conn,$insert_sql);
+oci_execute($parsed);
+
+echo "Your waitlist is ".$waitlist_No;
 
 ?>

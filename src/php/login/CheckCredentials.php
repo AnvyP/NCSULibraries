@@ -23,7 +23,7 @@ if(verifyCredentials($conn,$_REQUEST["NAME"],$_REQUEST["PASSWORD"])){
 	session_start();
 	$_SESSION['NAME'] = $_REQUEST["NAME"];
 	$_SESSION['USER'] = $_REQUEST["USER"];	
-	if($_SESSION['USER'] == "STUDENT"){
+	if($_SESSION['USER'] == "Student"){
 		header('Location: student/index.php');
 	}else{
 		header('Location: faculty/index.php');

@@ -34,9 +34,9 @@ echo "<br><br>";
 
 $date = date_create();
 date_format($date,'m-d-Y H:i:s');
-$startDateUSA=date_format(date_timestamp_set($date, $from_time),'d/M/Y H:i:s');
+$startDateUSA=date_format(date_timestamp_set($date, $from_time),'d/M/Y h:i:s A');
 
-$endDateUSA=date_format(date_timestamp_set($date, $to_time),'d/M/Y H:i:s');
+$endDateUSA=date_format(date_timestamp_set($date, $to_time),'d/M/Y h:i:s A');
 
 
 echo "startDateTime " .$startDateUSA . "\n";
