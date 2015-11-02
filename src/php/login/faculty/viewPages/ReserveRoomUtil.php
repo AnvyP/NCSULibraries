@@ -27,6 +27,12 @@ echo "differnce in time between $to_time , $from_time: ";
 $duration_min= round(abs($to_time - $from_time) / 60,2). " minute";
 echo"$duration_min";
 
+if($duration_min >180){
+	// if duration is more than 3 hrs.. then shouldn't proceed
+	echo "<br><br>  Can't reserve a room for more than 3 hrs!!";
+	echo "<br> <br> Click <a href=\"ReserveRoom.php\">here </a>to go Back to previous Page: Room Reservations";
+	exit(0);
+}
 
 echo "<br><br>";
 echo "DATETIME in USA FORMAT";
@@ -51,7 +57,7 @@ SELECT rr.\"RoomNumber\" FROM ROOM_RESERVATION rr
 WHERE NOT (rr.\"EndTime\"   < CAST('{$startDateUSA}' AS TIMESTAMP)
 OR
 rr.\"StartTime\" > CAST('{$endDateUSA}' AS TIMESTAMP)))
-AND r.\"Capacity\" > $occupancy
+AND r.\"Capacity\" >= $occupancy
 AND r.\"Type\" = '{$type}'
 ORDER BY r.\"RoomNumber\"";
 
