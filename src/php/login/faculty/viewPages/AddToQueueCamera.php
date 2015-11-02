@@ -14,7 +14,7 @@ $UnityId = $_SESSION['NAME'];
 $checkoutDay = $_REQUEST['date'];
 $id =$_REQUEST['id'];
 
-$waitlist_sql = "SELECT DISTINCT cq.\"Date\",MAX(cq.\"WaitlistNumber\")+1 as WAITLIST_NO 
+$waitlist_sql = "SELECT DISTINCT cq.\"DateofQueue\",MAX(cq.\"WaitlistNumber\")+1 as WAITLIST_NO 
 				 FROM CAMERA_QUEUE cq
 				 WHERE cq.\"DateOfQueue\" = CAST('{$checkoutDay}' as TIMESTAMP)
 				 AND cq.\"ID\" = '${id}'

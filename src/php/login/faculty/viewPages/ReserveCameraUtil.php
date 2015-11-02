@@ -19,7 +19,7 @@ $date = date_create();
 date_format($date,'m-d-Y');
 $checkoutDateUSA=date_format(date_timestamp_set($date, $from_time),'d/M/Y h:i:s A');
 
-$check_if_friday_sql="SELECT TO_CHAR($checkoutDateUSA,'D') as DAY  from dual";
+$check_if_friday_sql="SELECT TO_CHAR(CAST('{$checkoutDateUSA}','D') as DAY  from dual";
 var_dump($check_if_friday_sql);
 $stid = oci_parse($conn, $check_if_friday_sql);
 $check_if_friday_result = oci_execute($stid);
