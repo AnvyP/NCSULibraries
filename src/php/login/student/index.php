@@ -11,6 +11,10 @@ echo "<a href=\"HomePage.php\">Profile!</a>";
 echo "<br> <br>";
 echo "<a href=\"viewPages/AccountBalance.php\">Account Balance!</a>";
 echo "<br> <br>";
+
+echo "<a href=\"../../checkout/student/publications/CheckoutPublications.php\">To Check Out Resources!</a>";
+echo "<br> <br>";
+
 echo "<a href=\"viewPages/CheckedOut.php\">Checked Out Resources!</a>";
 echo "<br> <br>";	
 echo "<a href=\"viewPages/Notifications.php\">Notifications!</a>";

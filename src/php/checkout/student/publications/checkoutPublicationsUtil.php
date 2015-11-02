@@ -34,7 +34,7 @@ function get_no_request_sql($UnityId,$conn) {
                            (SELECT c.\"ID\"
                               FROM PUBLICATION_CHECKOUT c
                              WHERE     c.\"UnityId\" = '{$UnityId}'
-                                   AND c.\"ReturnDate\" <> CAST('31/DEC/9999' AS TIMESTAMP)))";
+                                   AND c.\"ReturnDate\" = CAST('31/DEC/9999' AS TIMESTAMP)))";
 	return run_sql($conn,$sql);
 }
 
@@ -80,7 +80,7 @@ function get_can_be_checked_out_sql($UnityId,$conn) {
                            (SELECT c.\"ID\"
                               FROM PUBLICATION_CHECKOUT c
                              WHERE     c.\"UnityId\" = '{$UnityId}'
-                                   AND c.\"ReturnDate\" <> CAST('31/DEC/9999' AS TIMESTAMP)))";
+                                   AND c.\"ReturnDate\" = CAST('31/DEC/9999' AS TIMESTAMP)))";
 	return run_sql($conn,$sql);
 }
 
@@ -130,7 +130,7 @@ function get_add_to_waitlist_sql($UnityId,$conn) {
                            (SELECT c.\"ID\"
                               FROM PUBLICATION_CHECKOUT c
                              WHERE     c.\"UnityId\" = '{$UnityId}'
-                                   AND c.\"ReturnDate\" <> CAST('31/DEC/9999' AS TIMESTAMP)))";
+                                   AND c.\"ReturnDate\" = CAST('31/DEC/9999' AS TIMESTAMP)))";
 	return run_sql($conn,$sql);
 }
 
