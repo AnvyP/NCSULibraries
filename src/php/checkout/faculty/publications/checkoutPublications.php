@@ -64,6 +64,7 @@ if(sizeof($no_request) > 0) {
 	}
 }
 
+echo "<a href=\"../../../login/faculty/viewPages/CheckedOut.php\">Checked Out Resources!</a>";
 //session_destroy();
 
 // HINT: Use readonly attribute in input text.
