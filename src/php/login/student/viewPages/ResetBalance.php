@@ -10,7 +10,7 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-$query = "SELECT \"Balance\" AS BALANCE FROM LIBRARYPATRON \"UnityId\"='".$UnityId."'";
+$query = "SELECT \"Balance\" AS BALANCE FROM LIBRARYPATRON WHERE \"UnityId\"='".$UnityId."'";
 var_dump($query);
 $stid = oci_parse($conn, $query);
 $result = oci_execute($stid);
