@@ -10,7 +10,7 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-$insert_camera_notif_sql="SELECT c.\"ID\" || ' camera with due date ' || (c.\"CheckoutDate\" + INTERVAL '6' DAY) || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY)))/30))*30 || ' days past due . Please return to avoid reduced fine.' as NOTIF
+$insert_camera_notif_sql="SELECT 'Camera with ID ' || c.\"ID\" || ' and with due date ' || (c.\"CheckoutDate\" + INTERVAL '6' DAY) || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY)))/30))*30 || ' days past due . Please return to avoid reduced fine.' as NOTIF
 FROM CAMERA_CHECKOUT c
 WHERE c.\"UnityId\" = '{$UnityId}'
 AND EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY))) > 30
@@ -35,7 +35,7 @@ if($nrows > 0){
 }
 
 
-$insert_publication_notif_sql="SELECT p.\"ID\" || ' publication with due date ' || p.\"DueDate\" || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\"))/30))*30 || ' past due . Please return to avoid reduced fine.'   as NOTIF
+$insert_publication_notif_sql="SELECT ' Publication with ID ' || p.\"ID\" || ' and due date ' || p.\"DueDate\" || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\"))/30))*30 || ' past due . Please return to avoid reduced fine.'   as NOTIF
 FROM PUBLICATION_CHECKOUT p
 WHERE p.\"UnityId\" = '{$UnityId}'
 AND EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\")) > 30
