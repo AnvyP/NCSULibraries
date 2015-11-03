@@ -11,7 +11,20 @@ echo "<a href=\"HomePage.php\">Profile!</a>";
 echo "<br> <br>";
 echo "<a href=\"viewPages/AccountBalance.php\">Account Balance!</a>";
 echo "<br> <br>";
-
+$UnityId=$_SESSION['NAME'];
+$query="SELECT \"isHeld\" AS HOLD FROM STUDENT WHERE \"UnityId\" = '{$UnityId}'";
+$stid = oci_parse($conn,$query);
+oci_execute($stid);
+$nrows = oci_fetch_all($stid, $isHeldResult, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+if($nrows == 1) {
+	$isHeld = $isHeldResult[0]['HOLD'];
+} else {
+	echo "No rows returned";
+}
+if($isHeld == 'Y') {
+	echo "Reset balance from Account balance link to access library resources.";
+}
+else {
 echo "<a href=\"../../checkout/student/publications/CheckoutPublications.php\">To Check Out Resources!</a>";
 echo "<br> <br>";
 
@@ -29,9 +42,10 @@ echo "<br> <br>";
 echo "<a href=\"viewPages/ReserveCamera.php\">Reserve Camera!</a>";
 echo "<br> <br>";
 
+
 echo "<a href=\"viewPages/CheckoutCamera.php\">Checkout Camera!</a>";
 echo "<br> <br>";
-
+}
 
 
 ?>
