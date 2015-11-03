@@ -41,7 +41,7 @@ WHERE p.\"UnityId\" = '{$UnityId}'
 AND EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\")) > 30
 AND p.\"ReturnDate\" > SYSTIMESTAMP
 AND p.\"ID\" || ' publication with due date ' || p.\"DueDate\" || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\"))/30))*30 || ' past due . Please return to avoid reduced fine.' 
-NOT IN (SELECT CAST(n.\"INFORMATION\" as VARCHAR2(500)) FROM NOTIFICATION n WHERE n.\"UNITYID\"='{$UnityId}');";
+NOT IN (SELECT CAST(n.\"INFORMATION\" as VARCHAR2(500)) FROM NOTIFICATION n WHERE n.\"UNITYID\"='{$UnityId}')";
 
 var_dump($insert_camera_notif_sql);
 $stid = oci_parse($conn,$insert_camera_notif_sql);
