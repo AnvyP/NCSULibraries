@@ -37,7 +37,7 @@ if (!$result) {
 	echo oci_error();
 }else{
 	
-	header( "Location: AccountBalance.php" );
+	//header( "Location: AccountBalance.php" );
 }
 
 ?>
