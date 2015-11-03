@@ -29,7 +29,7 @@ else {
 echo "<a href=\"../../checkout/student/publications/CheckoutPublications.php\">To Check Out Resources!</a>";
 echo "<br> <br>";
 
-echo "<a href=\"viewPages/CheckedOut.php\">Checked Out Resources!</a>";
+echo "<a href=\"viewPages/CheckedOut.php\">Checked Out Resources(BOOKS AND CAMERAS)!</a>";
 echo "<br> <br>";	
 echo "<a href=\"viewPages/Notifications.php\">Notifications!</a>";
 echo "<br> <br>";

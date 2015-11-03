@@ -12,8 +12,8 @@ require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
 $query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" ,PD.\"Type\"
-		from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD 
-		where P.\"ID\"=PC.\"ID\" AND P.\"IDENTIFIER\"=PD.\"Identifier\" AND  
+		from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD
+		where P.\"ID\"=PC.\"ID\" AND P.\"IDENTIFIER\"=PD.\"Identifier\" AND
 		P.\"TYPE\"=PD.\"Type\" AND PC.\"ReturnDate\"> SYSTIMESTAMP  AND PC.\"UnityId\"='".$UnityId."'";
 var_dump($query);
 $stid = oci_parse($conn, $query);
@@ -24,8 +24,9 @@ if (!$result) {
 	//working fine.
 }
 
-$query2 = "select CC.\"ID\",CC.\"ReturnDate\", CC.\"ReservationDate\", CC.\"CheckoutDate\", C.\"MAKE\", C.\"MODEL\" 
-		from CAMERA_CHECKOUT CC, CAMERA C where CC.\"ID\"=C.\"ID\" AND CC.\"UnityId\"='".$UnityId."'";
+$query2 = "select CC.\"ID\",CC.\"ReturnDate\", CC.\"ReservationDate\", CC.\"CheckoutDate\", C.\"MAKE\", C.\"MODEL\"
+		from CAMERA_CHECKOUT CC, CAMERA C where CC.\"ID\"=C.\"ID\" AND CC.\"IsCheckedOut\"='Y'
+		AND CC.\"UnityId\"='".$UnityId."'";
 
 var_dump($query2);
 $stid2 = oci_parse($conn, $query2);
@@ -92,9 +93,16 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 
 
 	echo "<td>";
-	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&TYPE=".$row['Type']."		\"> Return </a>";
-		echo "</td>";
+	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".
+			$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&TYPE=".$row['Type']."		\"> Return </a>";
+	echo "<br><br>";
 	
+	echo "<a href= \"RenewResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".
+			$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&TYPE=".$row['Type']."		\"> Renew </a>";
+	
+	echo "<br><br>";
+	echo "</td>";
+
 	echo "</tr>";
 
 }
@@ -162,15 +170,15 @@ while ($row = oci_fetch_array($stid2, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo "<td>";
 	echo $row['ReservationDate'];
 	echo "</td>";
-	
+
 	echo "<td>";
 	echo $row['CheckoutDate'];
 	echo "</td>";
-	
+
 	echo "<td>";
-	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."&IS_BOOK=N\"> Return </a>";
+	echo "<a href=\"ReturnCamera.php?ID=".$row['ID']."&CHECKOUT_DATE=".$row['CheckoutDate']."\"> Return </a>";
 	echo "</td>";
-	
+
 	echo "</tr>";
 
 }
