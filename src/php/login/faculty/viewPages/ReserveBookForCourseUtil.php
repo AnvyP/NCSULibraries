@@ -13,7 +13,7 @@ $UnityId = $_SESSION['NAME'];
 
 
 $course = $_REQUEST['ID'];
-$isbn = $_REQUEST['Identifier'];
+$isbn = $_REQUEST['IDENTIFIER'];
 
 echo "<br> <br>";
 $ReserveBookQuery ="INSERT INTO RESERVES('{$UnityId}','{$course}','{$isbn}',SYSTIMESTAMP,(SYSTIMESAMP + INTERVAL '4' MONTH))";

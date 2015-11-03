@@ -10,7 +10,7 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-echo "<form action=\"ReserveRoomUtil.php\">";
+echo "<form action=\"ReserveBookForCourseUtil.php\">";
 echo "<br><br>";
 $query = "select distinct pd.\"Identifier\" as IDENTIFIER
 		from PUBLICATION_DETAILS pd
