@@ -107,8 +107,11 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 		if($row['IS_RESERVED'] == 'N'){
 			$camId = $row['ID'];
 			$query2 = "select CQ.\"UnityId\" from CAMERA_QUEUE CQ
-			where CQ.\"ID\"='$camId' AND CQ.\"WaitlistNumber\"=
-			(select MIN(\"WaitlistNumber\") from CAMERA_QUEUE where \"ID\"='$camId' )  ";
+			where CQ.\"ID\"='$camId'
+			AND TO_DATE(CAST(CQ.\"DateOfQueue\" AS DATE))=TO_DATE(SYSDATE) 
+			AND CQ.\"WaitlistNumber\"=
+			(select MIN(\"WaitlistNumber\") from CAMERA_QUEUE where \"ID\"='$camId' AND 
+			TO_DATE(CAST(CQ.\"DateOfQueue\" AS DATE))=TO_DATE(SYSDATE))  ";
 
 			var_dump($query2);
 			$stid2 = oci_parse($conn, $query2);
@@ -118,9 +121,8 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 			}else{
 				//working fine.
 			}
-			$row2 = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
-
-			if($row2['UnityId'] == $UnityId){
+			$row2 = oci_fetch_array($stid2, OCI_ASSOC+OCI_RETURN_NULLS);
+			if(isset($row2['UnityId']) && $row2['UnityId'] == $UnityId){
 				echo "click here for checkout";
 			}
 			else{
