@@ -27,6 +27,15 @@ if($nrows == 1) {
 	} else {
 		echo "Updated transaction successfully";
 	}
+	$query = "UPDATE STUDENT SET \"isHeld\"='N' WHERE \"UnityId\"='".$UnityId."'";
+	$stid = oci_parse($conn, $query);
+	$result = oci_execute($stid);
+	var_dump($query);
+	if(!$result) {
+		echo "Error while updating hold status";
+	} else {
+		echo "Updated successfully";
+	}
 } else {
 	echo "Some error occurred";
 }
