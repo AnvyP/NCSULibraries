@@ -12,8 +12,8 @@ require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
 
-$course = $_REQUEST['ID'];
-$isbn = $_REQUEST['IDENTIFIER'];
+$course = $_REQUEST['Course'];
+$isbn = $_REQUEST['Books'];
 
 echo "<br> <br>";
 $ReserveBookQuery ="INSERT INTO RESERVES('{$UnityId}','{$course}','{$isbn}',SYSTIMESTAMP,(SYSTIMESAMP + INTERVAL '4' MONTH))";
