@@ -17,9 +17,11 @@ $result = oci_execute($stid);
 $nrows = oci_fetch_all($stid, $balance, null, null, OCI_FETCHSTATEMENT_BY_ROW);
 if($nrows == 1) {
 	$balanceAmount = $balance[0]['BALANCE'];
-	$query = "INSERT INTO ACCOUNT_HISTORY VALUES('{$UnityId}',SYSTIMESTAMP,{$balanceAmount},1)";
+	var_dump($balanceAmount);
+	$query = "INSERT INTO ACCOUNT_HISTORY VALUES('{$UnityId}',SYSTIMESTAMP,{$balanceAmount}*-1,1)";
 	$stid = oci_parse($conn, $query);
 	$result = oci_execute($stid);
+	var_dump($query);
 	if(!$result) {
 		echo "Error while updating transaction table";
 	} else {
@@ -37,7 +39,7 @@ if (!$result) {
 	echo oci_error();
 }else{
 	
-	//header( "Location: AccountBalance.php" );
+	header( "Location: AccountBalance.php" );
 }
 
 ?>
