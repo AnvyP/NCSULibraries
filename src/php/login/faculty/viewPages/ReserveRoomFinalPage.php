@@ -40,4 +40,9 @@ if (!$result) {
 }
 
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
+
+
+
 ?>

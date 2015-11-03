@@ -27,7 +27,7 @@ echo "</table>";
 echo "</tr>";
 echo "</td>";
 echo "</table >";
-echo __DIR__;
+
 echo "</BODY>";
 
 echo "</HTML>";

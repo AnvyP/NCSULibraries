@@ -30,4 +30,6 @@ if (!$result) {
 	header( "Location: RoomCheckInCheckout.php" );
 }
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

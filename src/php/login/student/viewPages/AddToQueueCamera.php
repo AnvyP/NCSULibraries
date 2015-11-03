@@ -52,6 +52,7 @@ if(!$result) {
 		echo "<br> <br>";
 	}
 }
-
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 
 ?>

@@ -50,5 +50,7 @@ if (!$result) {
 	header('Location: ../HomePage.php');
 }
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 //\"Classification\"='$Classification',
 ?>

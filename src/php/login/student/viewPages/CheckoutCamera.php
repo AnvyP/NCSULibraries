@@ -103,14 +103,14 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 	$duration_min= round(($currentTime - $startTime) / 60,0);
 
 	if($duration_min >480 && $duration_min< 720){
-		//=> greater than 8 AM and Less than 12 PM
+		//=> greater than 8 AM(480) and Less than 12 PM
 		if($row['IS_RESERVED'] == 'N'){
 			$camId = $row['ID'];
 			$query2 = "select CQ.\"UnityId\" from CAMERA_QUEUE CQ
 			where CQ.\"ID\"='$camId'
-			AND TO_DATE(CAST(CQ.\"DateOfQueue\" AS DATE))=TO_DATE(SYSDATE) 
+			AND TO_DATE(CAST(CQ.\"DateOfQueue\" AS DATE))=TO_DATE(SYSDATE)
 			AND CQ.\"WaitlistNumber\"=
-			(select MIN(\"WaitlistNumber\") from CAMERA_QUEUE where \"ID\"='$camId' AND 
+			(select MIN(\"WaitlistNumber\") from CAMERA_QUEUE where \"ID\"='$camId' AND
 			TO_DATE(CAST(CQ.\"DateOfQueue\" AS DATE))=TO_DATE(SYSDATE))  ";
 
 			var_dump($query2);
@@ -123,7 +123,9 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 			}
 			$row2 = oci_fetch_array($stid2, OCI_ASSOC+OCI_RETURN_NULLS);
 			if(isset($row2['UnityId']) && $row2['UnityId'] == $UnityId){
-				echo "click here for checkout";
+				echo "click <a href=\"CheckoutCameraUtil.php?".
+				"ID=".$row['ID']."&UNITY_ID=".$UnityId."&DATE_OF_QUEUE=".$row['DateOfQueue']."\">here</a> for checkout";
+
 			}
 			else{
 				echo "your waitlist number :".$row['WaitlistNumber'];
@@ -143,4 +145,7 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 }
 
 echo "</table>";
+
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>
