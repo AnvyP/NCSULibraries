@@ -28,7 +28,8 @@ if(!$result) {
 	echo "<br> <br>";
 }
 else {
-	$query = "INSERT INTO NOTIFICATION VALUES('{$UnityId}',SYSTIMESTAMP,'Book with ISBN' || $isbn || ' has been reserved for course ' || $course || ' and expires on ' || (SYSTIMESTAMP + INTERVAL '4' MONTH))";	
+	$query = "INSERT INTO NOTIFICATION VALUES('{$UnityId}',SYSTIMESTAMP,'Book with ISBN ' || $isbn || ' has been reserved for course ' || $course || ' and expires in 4 months ')";	
+	var_dump($query);
 	$stid = oci_parse($conn,$query);
 	$result = oci_execute($stid);
 	if(!$result) {
