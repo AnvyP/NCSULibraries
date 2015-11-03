@@ -34,8 +34,8 @@ echo "</select>";
 echo "<br><br>";
 
 echo "<br><br>";
-$query = "select distinct pd.\"ID\"
-		from  COURSE c
+$query = "select distinct c.\"CourseId\"
+		from  COURSES c
 		";
 var_dump($query);
 $stid = oci_parse($conn, $query);
