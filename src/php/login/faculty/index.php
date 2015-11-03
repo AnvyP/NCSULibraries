@@ -31,5 +31,8 @@ echo "<br> <br>";
 echo "<a href=\"viewPages/ReserveCamera.php\">Reserve Camera!</a>";
 echo "<br> <br>";
 
+echo "<a href=\"viewPages/ReserveBookForCourse.php\">Reserve Book for Course!</a>";
+echo "<br> <br>";
+
 
 ?>

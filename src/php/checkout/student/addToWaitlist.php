@@ -34,5 +34,5 @@ var_dump($result);
 	oci_execute($parsed);
 
 	echo "Your waitlist is ".$waitlist_No;
-
+	echo "<a href=\"../../login/student/viewPages/CheckedOut.php\">Checked Out Resources!</a>";
 ?>
