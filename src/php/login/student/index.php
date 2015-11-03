@@ -6,6 +6,7 @@ if(!isset($_SESSION['NAME'])){
 	header('Location: ../index.php');
 	echo "Some thing wrong with session";
 }
+require_once('../../connections/Connection.php');
 
 echo "<a href=\"HomePage.php\">Profile!</a>";
 echo "<br> <br>";
