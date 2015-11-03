@@ -102,7 +102,7 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 	$startTime = DateTime::createFromFormat('d-M-y h.i.s.u A', $startTime)->getTimestamp();
 	$duration_min= round(($currentTime - $startTime) / 60,0);
 
-	if($duration_min >0 && $duration_min< 720){
+	if($duration_min >480 && $duration_min< 720){
 		//=> greater than 8 AM(480) and Less than 12 PM
 		if($row['IS_RESERVED'] == 'N'){
 			$camId = $row['ID'];
@@ -145,4 +145,7 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)){
 }
 
 echo "</table>";
+
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

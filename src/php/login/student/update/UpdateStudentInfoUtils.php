@@ -34,4 +34,6 @@ function fetchAndUpdateStudentInfo($query,$conn,$nextPage){
 	
 }
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

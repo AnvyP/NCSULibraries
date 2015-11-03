@@ -11,7 +11,7 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-$query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" ,PD.\"Type\"
+$query = "select PD.\"Identifier\", PD.\"Title\",PC.\"ID\" , PC.\"CheckoutDate\",PC.\"DueDate\",PC.\"ReturnDate\" ,PD.\"Type\",PD.\"CopyType\"
 		from PUBLICATION_CHECKOUT PC,PUBLICATIONS P, PUBLICATION_DETAILS PD
 		where P.\"ID\"=PC.\"ID\" AND P.\"IDENTIFIER\"=PD.\"Identifier\" AND
 		P.\"TYPE\"=PD.\"Type\" AND PC.\"ReturnDate\"> SYSTIMESTAMP  AND PC.\"UnityId\"='".$UnityId."'";
@@ -96,10 +96,13 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 	echo "<a href= \"ReturnResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".
 			$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&TYPE=".$row['Type']."		\"> Return </a>";
 	echo "<br><br>";
-	
-	echo "<a href= \"RenewResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".
-			$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&TYPE=".$row['Type']."		\"> Renew </a>";
-	
+	$copyType = $row['CopyType'];
+	if($copyType == "Electronic copy"){
+		echo "<br>It is an electronic copy, can't be renewed.<br>";
+	}else{
+		echo "<a href= \"RenewResource.php?ID=".$row['ID']."&CHECKOUT_DATE=".
+				$row['CheckoutDate']."&IS_BOOK=Y&IDENTIFIER=".$row['Identifier']."&DUEDATE=".$row['DueDate']."&TYPE=".$row['Type']."		\"> Renew </a>";
+	}
 	echo "<br><br>";
 	echo "</td>";
 
@@ -188,5 +191,6 @@ echo "</table>";
 
 //Publication Checkout
 //Camera Checkout
-
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

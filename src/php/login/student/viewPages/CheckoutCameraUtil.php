@@ -60,4 +60,6 @@ if (!$result) {
 }
 
 header( "Location: CheckoutCamera.php" );
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

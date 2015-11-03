@@ -38,6 +38,7 @@ if (!$result) {
 	echo "ROOM  $RoomNumber RESERVED<br><br> LOCATION: $Location<br><br> START_TIME: $startTime<br><br> END_TIME : $endTime";
 	echo "<br><br><a href=\"../index.php\"> HomePage </a>";
 }
-
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 
 ?>

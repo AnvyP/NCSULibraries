@@ -27,4 +27,9 @@ fetchAndUpdateStudentInfo($query,$conn,$nextPage);
 
 // HINT: Use readonly attribute in input text.
 //Country: <input type="text" name="country" value="Norway" readonly><br>
+
+
+require_once('../../connections/LogoutUtil.php');
+logout("../../connections/");
+
 ?>

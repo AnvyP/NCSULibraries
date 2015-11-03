@@ -95,5 +95,7 @@ while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
 
 echo "</table>";
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 
 ?>

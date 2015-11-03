@@ -18,4 +18,6 @@ echo "<br><br>";
 echo "<input type=\"submit\">";
 echo "<br><br>";
 echo"</form>";
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

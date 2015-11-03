@@ -39,5 +39,6 @@ if (!$result) {
 	//working fine.
 }
 
-
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

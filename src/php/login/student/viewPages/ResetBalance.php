@@ -51,4 +51,6 @@ if (!$result) {
 	header( "Location: AccountBalance.php" );
 }
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>
