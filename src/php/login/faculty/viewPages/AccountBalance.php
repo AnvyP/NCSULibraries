@@ -25,5 +25,8 @@ if($balance < 0){
 	echo "click here to clear your account Balance <a href=\"ResetBalance.php\">Clear Balance</a>";
 }
 
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
+
 
 ?>

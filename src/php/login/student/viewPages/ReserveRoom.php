@@ -24,8 +24,7 @@ echo "<input type=\"time\" name=\"endTime\">";
 echo "<br><br>";
 $query = "select distinct R.\"Capacity\"
 		from ROOM R
-		where R.\"Type\"='Conference'
-		OR
+		where 
 		R.\"Type\"='Study' ";
 var_dump($query);
 $stid = oci_parse($conn, $query);
@@ -51,4 +50,7 @@ echo"</form>";
 // <option value="mercedes">Mercedes</option>
 // <option value="audi">Audi</option>
 // </select>
+
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

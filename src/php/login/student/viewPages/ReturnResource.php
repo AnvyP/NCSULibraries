@@ -98,5 +98,6 @@ if($IS_BOOK == 'Y'){
 	}
 }
 //header( "Location: CheckedOut.php" );
-
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 ?>

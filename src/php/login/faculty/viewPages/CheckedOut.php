@@ -181,4 +181,10 @@ echo "</table>";
 //Publication Checkout
 //Camera Checkout
 
+
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
+
+
+
 ?>

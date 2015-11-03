@@ -68,4 +68,5 @@ function get_checkout_duration($publication_type,$userType,$copy_type,$is_reserv
 		return "SYSTIMESTAMP";
 }
 
+echo "<a href=\"../../login/faculty/viewPages/CheckedOut.php\">Checked Out Resources!</a>";
 ?>

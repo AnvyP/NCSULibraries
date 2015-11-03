@@ -78,5 +78,7 @@ else {
 	}
 
 }
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
 
 ?>

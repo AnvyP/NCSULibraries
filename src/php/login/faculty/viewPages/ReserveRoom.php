@@ -54,4 +54,10 @@ echo"</form>";
 // <option value="mercedes">Mercedes</option>
 // <option value="audi">Audi</option>
 // </select>
+
+
+require_once('../../../connections/LogoutUtil.php');
+logout("../../../connections/");
+
+
 ?>

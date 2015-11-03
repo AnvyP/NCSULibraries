@@ -64,7 +64,7 @@ if(sizeof($no_request) > 0) {
 	}
 }
 
-//session_destroy();
+echo "<a href=\"../../../login/student/viewPages/CheckedOut.php\">Checked Out Resources!</a>";
 
 // HINT: Use readonly attribute in input text.
 //Country: <input type="text" name="country" value="Norway" readonly><br>
