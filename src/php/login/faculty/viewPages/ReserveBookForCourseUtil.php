@@ -16,7 +16,7 @@ $course = $_REQUEST['Course'];
 $isbn = $_REQUEST['Books'];
 
 echo "<br> <br>";
-$ReserveBookQuery ="INSERT INTO RESERVES('{$UnityId}','{$course}','{$isbn}',SYSTIMESTAMP,(SYSTIMESAMP + INTERVAL '4' MONTH))";
+$ReserveBookQuery ="INSERT INTO RESERVES VALUES('{$UnityId}','{$course}','{$isbn}',SYSTIMESTAMP,(SYSTIMESAMP + INTERVAL '4' MONTH))";
 
 var_dump($ReserveBookQuery);
 $stid = oci_parse($conn, $ReserveBookQuery);
