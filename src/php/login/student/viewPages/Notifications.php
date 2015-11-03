@@ -10,7 +10,7 @@ $conn = null;
 require_once('../../../connections/Connection.php');
 $UnityId = $_SESSION['NAME'];
 
-$insert_publication_notif_sql="SELECT c.\"ID\" || ' camera with due date ' || (c.\"CheckoutDate\" + INTERVAL '6' DAY) || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY)))/30))*30 || ' days past due . Please return to avoid reduced fine.' as NOTIF
+$insert_camera_notif_sql="SELECT c.\"ID\" || ' camera with due date ' || (c.\"CheckoutDate\" + INTERVAL '6' DAY) || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY)))/30))*30 || ' days past due . Please return to avoid reduced fine.' as NOTIF
 FROM CAMERA_CHECKOUT c
 WHERE c.\"UnityId\" = '{$UnityId}'
 AND EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY))) > 30
@@ -18,13 +18,13 @@ AND c.\"ReturnDate\" > SYSTIMESTAMP
 AND c.\"ID\" || ' camera with due date ' || (c.\"CheckoutDate\" + INTERVAL '6' DAY) || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - (c.\"CheckoutDate\" + INTERVAL '6' DAY)))/30))*30 || ' days past due . Please return to avoid reduced fine.'
 NOT IN (SELECT CAST(n.\"INFORMATION\" as VARCHAR2(500)) FROM NOTIFICATION n WHERE n.\"UNITYID\"='{$UnityId}')";
 
-var_dump($insert_publication_notif_sql);
-$stid = oci_parse($conn,$insert_publication_notif_sql);
+var_dump($insert_camera_notif_sql);
+$stid = oci_parse($conn,$insert_camera_notif_sql);
 $result = oci_execute($stid);
 
-oci_fetch_all($stid, $publication_notif, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-if(sizeof($publication_notif) > 0){
-	foreach($publication_notif as $notif) {
+$nrows=oci_fetch_all($stid, $camera_notif, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+if($nrows > 0){
+	foreach($camera_notif as $notif) {
 		$notification = $notif['NOTIF'];
 		$insert_notification_sql="INSERT INTO NOTIFICATION VALUES('{$UnityId}',
 							  SYSTIMESTAMP,'{$notification}')";
@@ -35,7 +35,7 @@ if(sizeof($publication_notif) > 0){
 }
 
 
-$insert_camera_notif_sql="SELECT p.\"ID\" || ' publication with due date ' || p.\"DueDate\" || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\"))/30))*30 || ' past due . Please return to avoid reduced fine.'  
+$insert_publication_notif_sql="SELECT p.\"ID\" || ' publication with due date ' || p.\"DueDate\" || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\"))/30))*30 || ' past due . Please return to avoid reduced fine.'   as NOTIF
 FROM PUBLICATION_CHECKOUT p
 WHERE p.\"UnityId\" = '{$UnityId}'
 AND EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\")) > 30
@@ -43,13 +43,13 @@ AND p.\"ReturnDate\" > SYSTIMESTAMP
 AND p.\"ID\" || ' publication with due date ' || p.\"DueDate\" || ' is ' || (FLOOR(EXTRACT(DAY from (SYSTIMESTAMP - p.\"DueDate\"))/30))*30 || ' past due . Please return to avoid reduced fine.' 
 NOT IN (SELECT CAST(n.\"INFORMATION\" as VARCHAR2(500)) FROM NOTIFICATION n WHERE n.\"UNITYID\"='{$UnityId}')";
 
-var_dump($insert_camera_notif_sql);
-$stid = oci_parse($conn,$insert_camera_notif_sql);
+var_dump($insert_publication_notif_sql);
+$stid = oci_parse($conn,$insert_publication_notif_sql);
 $result = oci_execute($stid);
 
-oci_fetch_all($stid, $camera_notif, null, null, OCI_FETCHSTATEMENT_BY_ROW);
-if(sizeof($camera_notif) > 0){
-	foreach($camera_notif as $notif) {
+$nrows=oci_fetch_all($stid, $publication_notif, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+if($nrows > 0){
+	foreach($publication_notif as $notif) {
 		$notification = $notif['NOTIF'];
 		$insert_notification_sql="INSERT INTO NOTIFICATION VALUES('{$UnityId}',
 		SYSTIMESTAMP,'{$notification}')";
