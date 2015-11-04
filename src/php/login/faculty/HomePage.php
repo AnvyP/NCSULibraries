@@ -22,7 +22,6 @@ $query = "select F.\"UnityId\",F.\"FacultyNo\",F.\"Category\",
 $nextPage = "update/UpdateFacultyInfo.php";
 fetchAndUpdateFacultyInfo($query,$conn,$nextPage);
 
-//session_destroy();
 
 // HINT: Use readonly attribute in input text.
 //Country: <input type="text" name="country" value="Norway" readonly><br>

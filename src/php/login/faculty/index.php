@@ -11,7 +11,7 @@ echo "<a href=\"HomePage.php\">Profile!</a>";
 echo "<br> <br>";
 echo "<a href=\"viewPages/AccountBalance.php\">Account Balance!</a>";
 echo "<br> <br>";
-echo "<a href=\"viewPages/CheckedOut.php\">Checked Out Resources!</a>";
+echo "<a href=\"viewPages/CheckedOut.php\">Checked Out Resources(BOOKS AND CAMERAS)!</a>";
 echo "<br> <br>";
 
 echo "<a href=\"../../checkout/faculty/publications/CheckoutPublications.php\">To Check Out Resources!</a>";
@@ -30,6 +30,8 @@ echo "<br> <br>";
 
 echo "<a href=\"viewPages/ReserveCamera.php\">Reserve Camera!</a>";
 echo "<br> <br>";
+echo"<a href=\"viewPages/CheckoutCamera.php\">Checkout Camera!</a>";
+	echo "<br> <br>";
 
 echo "<a href=\"viewPages/ReserveBookForCourse.php\">Reserve Book for Course!</a>";
 echo "<br> <br>";
@@ -38,5 +40,7 @@ echo "<a href=\"viewPages/RequestedResources.php\">Requested Resources!</a>";
 echo "<br> <br>";
 
 
+require_once('../../connections/LogoutUtil.php');
+logout("../../connections/");
 
 ?>
