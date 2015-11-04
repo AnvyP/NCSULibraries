@@ -38,6 +38,19 @@ else {
 		echo "<a href=\"Notifications.php\">Notifications!</a>";
 		echo "<br> <br>";
 	}
+//ADD TO PUBLICATION DETAILS : update IsReserved = 'Y'
+
+	$query = "UPDATE PUBLICATION_DETAILS SET \"IsReserved\"='Y' 
+			where \"Identifier\"='$isbn' AND \"Type\"='Books'";
+	var_dump($query);
+	$stid = oci_parse($conn,$query);
+	$result = oci_execute($stid);
+	if(!$result) {
+		echo " Unexpected error occurred while pushing notification. But book has been reserved for the course";
+	} else {
+
+	}
+	
 }
 
 

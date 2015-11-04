@@ -34,5 +34,9 @@ echo "<br> <br>";
 echo "<a href=\"viewPages/ReserveBookForCourse.php\">Reserve Book for Course!</a>";
 echo "<br> <br>";
 
+echo "<a href=\"viewPages/RequestedResources.php\">Requested Resources!</a>";
+echo "<br> <br>";
+
+
 
 ?>

@@ -14,11 +14,12 @@ $UnityId = $_SESSION['NAME'];
 $checkoutDay = $_REQUEST['date'];
 $id =$_REQUEST['id'];
 
-$waitlist_sql = "SELECT DISTINCT cq.\"DateofQueue\",MAX(cq.\"WaitlistNumber\")+1 as WAITLIST_NO 
+$waitlist_sql = "SELECT DISTINCT cq.\"DateOfQueue\",MAX(cq.\"WaitlistNumber\")+1 as WAITLIST_NO 
 				 FROM CAMERA_QUEUE cq
 				 WHERE cq.\"DateOfQueue\" = CAST('{$checkoutDay}' as TIMESTAMP)
 				 AND cq.\"ID\" = '${id}'
 				 GROUP BY cq.\"DateOfQueue\"";
+var_dump($waitlist_sql);
 $stid = oci_parse($conn,$waitlist_sql);
 oci_execute($stid);
 oci_fetch_all($stid, $waitlist_result, null, null, OCI_FETCHSTATEMENT_BY_ROW);

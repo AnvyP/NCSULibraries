@@ -25,17 +25,6 @@ $updateBookQuery = "UPDATE PUBLICATIONS SET \"IsAvailable\"='Y' where \"ID\" =$I
 var_dump($updateBookQuery);
 
 
-//camera checkout -
-$updateCameraCheckout = "UPDATE CAMERA_CHECKOUT SET \"ReturnDate\"= SYSTIMESTAMP where \"ID\"='$ID' AND \"UnityId\"='$UnityId'
-AND \"CheckoutDate\" = '$checkoutDate'";
-
-var_dump($updateCameraCheckout);
-
-
-//camera reserved =n
-
-$updateCameraQuery = "UPDATE CAMERA SET \"IS_RESERVED\"='N' where \"ID\" ='$ID'";
-var_dump($updateCameraQuery);
 
 
 // check if there are ppl in waitListQueue for The same TYPE,same $IDENTIFER
@@ -44,11 +33,13 @@ $queryWaitList = "select \"UnityId\" from PUBLICATION_WAITLIST where \"Identifie
 var_dump($queryWaitList);
 
 
-$stid = oci_parse($conn, $queryWaitList);
-$result1=oci_execute($stid);
+$stid4 = oci_parse($conn, $queryWaitList);
+$result1=oci_execute($stid4);
 
-$noOfRows = oci_fetch_all($stid, $res);
-oci_free_statement($stid);
+
+$res = array();
+$noOfRows = oci_fetch_all($stid4, $res, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+oci_free_statement($stid4);
 
 
 if (!$result1) {
@@ -67,10 +58,6 @@ if($IS_BOOK == "Y"){
 	$query1 = $updateCheckout;
 	$query2 =$updateBookQuery;
 
-}else{
-	$query1 = $updateCameraCheckout;
-	$query2 =$updateCameraQuery;
-
 }
 $stid = oci_parse($conn, $query1);
 $result = oci_execute($stid);
@@ -87,16 +74,18 @@ if (!$result) {
 	//working fine.
 }
 
-if($IS_BOOK == 'Y'){
-	if($noOfRows >0){
-		//update book
-		$updateBookQuery = "UPDATE PUBLICATIONS SET \"IsAvailable\"='N' where \"ID\" =$ID";
-		var_dump($updateBookQuery);
 
-		$stid = oci_parse($conn, $updateBookQuery);
-		$result = oci_execute($stid);
-	}
+if($noOfRows >0 || isset($res[0]['UnityId'])){
+	//update book
+	sleep(2);
+	echo "Inside noOfRows: $noOfRows, ".($res[0]['UnityId']) ;
+	$updateBookQuery = "UPDATE PUBLICATIONS SET \"IsAvailable\"='N' where \"ID\" =$ID";
+	var_dump($updateBookQuery);
+
+	$stid = oci_parse($conn, $updateBookQuery);
+	$result = oci_execute($stid);
 }
+
 //header( "Location: CheckedOut.php" );
 
 

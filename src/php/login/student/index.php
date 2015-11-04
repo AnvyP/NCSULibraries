@@ -46,6 +46,9 @@ else {
 
 	echo "<a href=\"viewPages/CheckoutCamera.php\">Checkout Camera!</a>";
 	echo "<br> <br>";
+	echo "<a href=\"viewPages/RequestedResources.php\">Requested Resources!</a>";
+	echo "<br> <br>";
+	
 }
 
 require_once('../../connections/LogoutUtil.php');
